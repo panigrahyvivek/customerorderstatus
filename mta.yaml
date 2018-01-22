@@ -1,3 +1,31 @@
 ID: cos
 _schema-version: '2.0'
 version: 0.0.1
+
+modules:
+ - name: db
+   type: hdb
+   path: db
+   requires:
+    - name: cos-hdi-container
+      properties: 
+         TARGET_CONTAINER: '~{hdi-container-name}'
+    - name: edm-cross-container
+      group: SERVICE_REPLACEMENTS
+      properties: 
+         key: edm-schema-service
+         service: '~{edm-cross-container-service-name}'
+resources:
+ - name: cos-hdi-container
+   parameters:
+      config:
+         schema: COS
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+ - name: edm-cross-container
+   type: org.cloudfoundry.existing-service
+   parameters:
+      service-name: CROSS_SCHEMA_EDM
+   properties: 
+      edm-cross-container-service-name: '${service-name}'

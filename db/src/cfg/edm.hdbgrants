@@ -1,0 +1,26 @@
+{
+  "edm-schema-service": {
+    "object_owner": {
+      "schema_privileges": [
+        {
+          "reference": "HEAP",
+          "privileges_with_grant_option": [
+            "SELECT",
+            "SELECT METADATA"
+          ]
+        }
+      ]
+    },
+    "application_user": {
+      "schema_privileges": [
+        {
+          "reference": "HEAP",
+          "privileges_with_grant_option": [
+            "SELECT",
+            "SELECT METADATA"
+          ]
+        }
+      ]
+    }
+  }
+}
