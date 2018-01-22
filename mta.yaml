@@ -7,25 +7,25 @@ modules:
    type: hdb
    path: db
    requires:
-    - name: cos-hdi-container
+    - name: cos-hdi-container-1
       properties: 
          TARGET_CONTAINER: '~{hdi-container-name}'
-    - name: edm-cross-container
+    - name: edm-cross-container-1
       group: SERVICE_REPLACEMENTS
       properties: 
          key: edm-schema-service
-         service: '~{edm-cross-container-service-name}'
+         service: '~{edm-cross-container-1-service-name}'
 resources:
- - name: cos-hdi-container
+ - name: cos-hdi-container-1
    parameters:
       config:
          schema: COS
    properties:
       hdi-container-name: ${service-name}
    type: com.sap.xs.hdi-container
- - name: edm-cross-container
+ - name: edm-cross-container-1
    type: org.cloudfoundry.existing-service
    parameters:
       service-name: CROSS_SCHEMA_EDM
    properties: 
-      edm-cross-container-service-name: '${service-name}'
+      edm-cross-container-1-service-name: '${service-name}'

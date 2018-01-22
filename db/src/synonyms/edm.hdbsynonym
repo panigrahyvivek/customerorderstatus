@@ -1,0 +1,44 @@
+{
+  "cos.db.synonyms::CA_CNTRY_V1": {
+    "target": {
+      "object": "CA_CNTRY_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_CUST_BRKR_V1": {
+    "target": {
+      "object": "CA_CUST_BRKR_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_CUST_SHIPTO_V1": {
+    "target": {
+      "object": "CA_CUST_SHIPTO_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_CUST_SOLDTO_V1": {
+    "target": {
+      "object": "CA_CUST_SOLDTO_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_CUST_SVC_REP_V1": {
+    "target": {
+      "object": "CA_CUST_SVC_REP_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_DELV_DOC_V1": {
+    "target": {
+      "object": "CA_DELV_DOC_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_DISTN_CHAN_V1": {
+    "target": {
+      "object": "CA_DISTN_CHAN_V1",
+      "schema": "HEAP"
+    }
+  }
+}
