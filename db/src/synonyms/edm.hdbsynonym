@@ -40,5 +40,119 @@
       "object": "CA_DISTN_CHAN_V1",
       "schema": "HEAP"
     }
+  },
+  "cos.db.synonyms::CA_DIVISION_V1": {
+    "target": {
+      "object": "CA_DIVISION_V1",
+      "schema": "HEAP"
+    }
+  },
+   "cos.db.synonyms::CA_PLANT_V1": {
+    "target": {
+      "object": "CA_PLANT_V1",
+      "schema": "HEAP"
+    }
+  },
+   "cos.db.synonyms::CA_REGN_V1": {
+    "target": {
+      "object": "CA_REGN_V1",
+      "schema": "HEAP"
+    }
+  },
+   "cos.db.synonyms::CA_SALES_POSN_V1": {
+    "target": {
+      "object": "CA_SALES_POSN_V1",
+      "schema": "HEAP"
+    }
+  },
+   "cos.db.synonyms::CA_SD_DOC_FLOW_V1": {
+    "target": {
+      "object": "CA_SD_DOC_FLOW_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_SHIP_STATUS_EVENT_V1": {
+    "target": {
+      "object": "CA_SHIP_STATUS_EVENT_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_VEND_CARRIER_V1": {
+    "target": {
+      "object": "CA_VEND_CARRIER_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_FRT_ORD_CACHE_V1": {
+    "target": {
+      "object": "CA_FRT_ORD_CACHE_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_FRT_ORD_HDR_V1": {
+    "target": {
+      "object": "CA_FRT_ORD_HDR_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_FRT_ORD_LINE_V1": {
+    "target": {
+      "object": "CA_FRT_ORD_LINE_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_FRT_ORD_V2": {
+    "target": {
+      "object": "CA_FRT_ORD_V2",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_FRT_ORD_LINE_DOC_DTL_V1": {
+    "target": {
+      "object": "CA_FRT_ORD_LINE_DOC_DTL_V1",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_FRT_ORD_V3": {
+    "target": {
+      "object": "CA_FRT_ORD_V3",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_FRT_ORD_LINE_V2": {
+    "target": {
+      "object": "CA_FRT_ORD_LINE_V2",
+      "schema": "HEAP"
+    }
+  },
+   "cos.db.synonyms::CA_FRT_ORD_LINE_DOC_DTL_V2": {
+    "target": {
+      "object": "CA_FRT_ORD_LINE_DOC_DTL_V2",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_SALES_ORDER_V2": {
+    "target": {
+      "object": "CA_SALES_ORDER_V2",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_V4": {
+    "target": {
+      "object": "CA_MTRL_FG_SALEABLE_WIP_SAMPLE_V4",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_SALES_ORDER_V3": {
+    "target": {
+      "object": "CA_SALES_ORDER_V3",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::CA_PLANT_V2": {
+    "target": {
+      "object": "CA_PLANT_V2",
+      "schema": "HEAP"
+    }
   }
 }

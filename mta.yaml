@@ -7,7 +7,7 @@ modules:
    type: hdb
    path: db
    requires:
-    - name: cos-hdi-container-1
+    - name: hdi-container-1
       properties: 
          TARGET_CONTAINER: '~{hdi-container-name}'
     - name: edm-cross-container-1
@@ -16,7 +16,7 @@ modules:
          key: edm-schema-service
          service: '~{edm-cross-container-1-service-name}'
 resources:
- - name: cos-hdi-container-1
+ - name: hdi-container-1
    parameters:
       config:
          schema: COS
