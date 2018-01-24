@@ -154,11 +154,5 @@
       "object": "CA_PLANT_V2",
       "schema": "HEAP"
     }
-  },
-  "cos.db.synonyms::VBUK": {
-    "target": {
-      "object": "VBUK",
-      "schema": "HEAP"
-    }
   }
 }

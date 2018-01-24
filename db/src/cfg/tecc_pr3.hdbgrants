@@ -1,0 +1,26 @@
+{
+  "tecc-pr3-schema-service": {
+    "object_owner": {
+      "schema_privileges": [
+        {
+          "reference": "TECC_PR3",
+          "privileges_with_grant_option": [
+            "SELECT",
+            "SELECT METADATA"
+          ]
+        }
+      ]
+    },
+    "application_user": {
+      "schema_privileges": [
+        {
+          "reference": "TECC_PR3",
+          "privileges_with_grant_option": [
+            "SELECT",
+            "SELECT METADATA"
+          ]
+        }
+      ]
+    }
+  }
+}

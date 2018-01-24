@@ -288,19 +288,19 @@
   <layout>
     <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="212.295686309074" y="112"/>
+        <upperLeftCorner x="212" y="112"/>
         <rectangleSize height="0" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="GET_SALES_ORD_STATUS" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="91.99999999999997" y="337"/>
+        <upperLeftCorner x="91" y="337"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="281.99999999999994" y="337"/>
+        <upperLeftCorner x="281" y="337"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="212.295686309074" y="217"/>
+        <upperLeftCorner x="212" y="217"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
     
