@@ -21,6 +21,15 @@ modules:
          key: tecc-pr3-schema-service
          service: '~{tecc-pr3-container-service-name}'
 
+
+ - name: js
+   type: nodejs
+   path: js
+   provides:
+    - name: js_api
+      properties:
+         url: ${default-url}
+
 resources:
  - name: hdi-container-1
    parameters:
