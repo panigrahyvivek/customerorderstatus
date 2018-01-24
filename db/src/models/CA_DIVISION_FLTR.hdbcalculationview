@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_DIVISION_FLTR" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_DIVISION_FLTR"/>
+  <metadata changedAt="2018-01-24 10:22:18.07"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_DIVISION_EDM">
+      <resourceUri>cos.db.models::CA_DIVISION_EDM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="cos.db.models::CA_DIVISION_EDM">
+    <descriptions/>
+    <attributes>
+      <attribute id="DIVISION" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Division Code"/>
+        <keyMapping columnObjectName="CA_DIVISION_EDM" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DIV_DESCR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Division Description"/>
+        <keyMapping columnObjectName="CA_DIVISION_EDM" columnName="DIVISION_DESCR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="DIVISION_CONCAT" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_CONCAT"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="25">
+          <formula>&quot;DIVISION&quot; +' - '+ &quot;DIV_DESCR&quot;</formula>
+        </keyCalculation>
+        </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

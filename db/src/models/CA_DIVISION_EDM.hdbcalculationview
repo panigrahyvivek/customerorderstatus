@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_DIVISION_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_DIVISION_EDM"/>
+  <metadata changedAt="2018-01-24 10:21:48.512"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::CA_DIVISION_V1">
+      <resourceUri>cos.db.synonyms::CA_DIVISION_V1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="cos.db.synonyms::CA_DIVISION_V1">
+    <descriptions/>
+    <attributes>
+      <attribute id="DIVISION" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Division Code"/>
+        <keyMapping columnObjectName="CA_DIVISION_V1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DIVISION_DESCR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Division Description"/>
+        <keyMapping columnObjectName="CA_DIVISION_V1" columnName="DIVISION_DESCR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="92" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

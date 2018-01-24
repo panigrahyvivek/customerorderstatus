@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_CUST_SHIPTO_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_CUST_SHIPTO_EDM"/>
+  <metadata changedAt="2018-01-24 10:11:50.895"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="35"/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::CA_CUST_SHIPTO_V1">
+      <resourceUri>cos.db.synonyms::CA_CUST_SHIPTO_V1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="cos.db.synonyms::CA_CUST_SHIPTO_V1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SHIPTO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO"/>
+      </attribute>
+      <attribute id="SHIPTO_NAME1" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_NAME1"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_NAME1"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_ADDR_STREET1"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET4" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET4"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_ADDR_STREET4"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET5" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET5"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_ADDR_STREET5"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_CITY" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_CITY"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_ADDR_CITY"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_POSTAL_CODE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_POSTAL_CODE"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_ADDR_POSTAL_CODE"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_REGN" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_REGN"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_ADDR_REGN"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_CNTRY" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_COUNTRY_CODE"/>
+        <keyMapping columnObjectName="CA_CUST_SHIPTO_V1" columnName="SHIPTO_ADDR_CNTRY"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

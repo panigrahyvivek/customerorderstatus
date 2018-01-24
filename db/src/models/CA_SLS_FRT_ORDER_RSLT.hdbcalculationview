@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SLS_FRT_ORDER_RSLT" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SLS_FRT_ORDER_RSLT"/>
+  <metadata changedAt="2018-01-24 10:45:10.546"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="51"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_SALES_ORDER_EDM">
+      <resourceUri>cos.db.models::CA_SALES_ORDER_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
+      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SD_DOC_FLOW_EDM">
+      <resourceUri>cos.db.models::CA_SD_DOC_FLOW_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_DELV_DOC_EDM">
+      <resourceUri>cos.db.models::CA_DELV_DOC_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SOLD_TO_CUST_FLTR">
+      <resourceUri>cos.db.models::CA_SOLD_TO_CUST_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_DISTN_CHAN_FLTR">
+      <resourceUri>cos.db.models::CA_DISTN_CHAN_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_DIVISION_FLTR">
+      <resourceUri>cos.db.models::CA_DIVISION_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SHIP_TO_CUST_FLTR">
+      <resourceUri>cos.db.models::CA_SHIP_TO_CUST_FLTR</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="REQ_DELV_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;SALES_ORD_REQ_DELV_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SALES_ORDER_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SHIP_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <filter>(in (&quot;SALES_ORD_TYPE&quot;,'YDO','YEX','YMS','YNP','YOR','YSA','YTP','YXC','YXX'))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="SALES_ORD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_FRT_ORD_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+      </input>
+      <joinAttribute name="SALES_ORD"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SD_PRECEDING_DOC"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SD_DOC_FLOW_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_PRECEDING_DOC" source="SD_PRECEDING_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SD_SUBSEQNT_DOC"/>
+      </input>
+      <joinAttribute name="SALES_ORD"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DELV_DOC"/>
+        <viewAttribute id="DELV_DOC_PLAN_MOVEMENT_DATE"/>
+        <viewAttribute id="DELV_DOC_ACTL_MOVEMENT_DATE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="PLAN_MOVEMENT_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;DELV_DOC_PLAN_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="ACTL_MOVEMENT_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;DELV_DOC_ACTL_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_DELV_DOC_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC" source="DELV_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_PLAN_MOVEMENT_DATE" source="DELV_DOC_PLAN_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_ACTL_MOVEMENT_DATE" source="DELV_DOC_ACTL_MOVEMENT_DATE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="PLAN_MOVEMENT_DATE"/>
+        <viewAttribute id="ACTL_MOVEMENT_DATE"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLAN_MOVEMENT_DATE" source="PLAN_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTL_MOVEMENT_DATE" source="ACTL_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="DELV_DOC"/>
+      </input>
+      <joinAttribute name="SD_SUBSEQNT_DOC"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SOLD_TO_CUST_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="ORDER_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;SALES_ORD_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Aggregation_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+      </input>
+      <joinAttribute name="SOLDTO"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_DISTN_CHAN_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+      </input>
+      <joinAttribute name="DISTN_CHAN"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_DIVISION_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      </input>
+      <joinAttribute name="DIVISION"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SHIP_TO_CUST_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="REQ_DELV_DATE"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REQ_DELV_DATE" source="REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+      </input>
+      <joinAttribute name="SHIPTO"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_7">
+    <descriptions/>
+    <attributes>
+      <attribute id="SOLDTO_CONCAT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_CONCAT"/>
+        <keyMapping columnObjectName="Join_7" columnName="SOLDTO_CONCAT"/>
+      </attribute>
+      <attribute id="DISTN_CHAN_CONCAT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DISTN_CHAN_CONCAT"/>
+        <keyMapping columnObjectName="Join_7" columnName="DISTN_CHAN_CONCAT"/>
+      </attribute>
+      <attribute id="DIVISION_CONCAT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_CONCAT"/>
+        <keyMapping columnObjectName="Join_7" columnName="DIVISION_CONCAT"/>
+      </attribute>
+      <attribute id="SHIPTO_CONCAT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_CONCAT"/>
+        <keyMapping columnObjectName="Join_7" columnName="SHIPTO_CONCAT"/>
+      </attribute>
+      <attribute id="FRT_ORD" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD"/>
+        <keyMapping columnObjectName="Join_7" columnName="FRT_ORD"/>
+      </attribute>
+      <attribute id="CUST_PO" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUST_PO"/>
+        <keyMapping columnObjectName="Join_7" columnName="CUST_PO"/>
+      </attribute>
+      <attribute id="SALES_ORD_ITEM_DELV_PLANT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_ITEM_DELV_PLANT"/>
+        <keyMapping columnObjectName="Join_7" columnName="SALES_ORD_ITEM_DELV_PLANT"/>
+      </attribute>
+      <attribute id="ORDER_DATE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ORDER_DATE"/>
+        <keyMapping columnObjectName="Join_7" columnName="ORDER_DATE"/>
+      </attribute>
+      <attribute id="SHIPTO" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO"/>
+        <keyMapping columnObjectName="Join_7" columnName="SHIPTO"/>
+      </attribute>
+      <attribute id="SOLDTO" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO"/>
+        <keyMapping columnObjectName="Join_7" columnName="SOLDTO"/>
+      </attribute>
+      <attribute id="DISTN_CHAN" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DISTN_CHAN"/>
+        <keyMapping columnObjectName="Join_7" columnName="DISTN_CHAN"/>
+      </attribute>
+      <attribute id="DIVISION" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Join_7" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="SALES_ORD_REQ_DELV_DATE" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_REQ_DELV_DATE"/>
+        <keyMapping columnObjectName="Join_7" columnName="SALES_ORD_REQ_DELV_DATE"/>
+      </attribute>
+      <attribute id="SALES_ORD_TYPE" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_TYPE"/>
+        <keyMapping columnObjectName="Join_7" columnName="SALES_ORD_TYPE"/>
+      </attribute>
+      <attribute id="REQ_DELV_DATE" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_7" columnName="REQ_DELV_DATE"/>
+      </attribute>
+      <attribute id="HDR_SALES_POSN" order="16" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HDR_SALES_POSN"/>
+        <keyMapping columnObjectName="Join_7" columnName="HDR_SALES_POSN"/>
+      </attribute>
+      <attribute id="SALES_ORD" order="17" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DOC"/>
+        <keyMapping columnObjectName="Join_7" columnName="SALES_ORD"/>
+      </attribute>
+      <attribute id="PRIM_BRKR" order="18" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HDR_PRIM_BRKR"/>
+        <keyMapping columnObjectName="Join_7" columnName="PRIM_BRKR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="445" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="1162"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="282" y="1162"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="115" y="1042"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_8" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="368" y="1042"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="138" y="922"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="487" y="922"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="464" y="802"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_9" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="742" y="697"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="552" y="697"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="729" y="577"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Aggregation_4" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="539" y="577"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="665" y="457"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="475" y="457"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="571" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="381" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="445" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    
+      <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

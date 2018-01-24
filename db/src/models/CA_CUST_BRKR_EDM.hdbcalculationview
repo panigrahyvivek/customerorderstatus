@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_CUST_BRKR_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_CUST_BRKR_EDM"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::CA_CUST_BRKR_V1">
+      <resourceUri>cos.db.synonyms::CA_CUST_BRKR_V1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="GET_BROKERS">
+      <viewAttributes>
+        <viewAttribute id="BRKR"/>
+        <viewAttribute id="BRKR_NAME1"/>
+        <viewAttribute id="BRKR_ACCT_GRP"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.synonyms::CA_CUST_BRKR_V1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRKR" source="BRKR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRKR_NAME1" source="BRKR_NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRKR_ACCT_GRP" source="CUST_ACCT_GRP"/>
+      </input>
+      <filter>(&quot;BRKR_ACCT_GRP&quot; ='ZBKR')</filter>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="GET_BROKERS">
+    <attributes>
+      <attribute id="BRKR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="KUNNR"/>
+        <keyMapping columnObjectName="GET_BROKERS" columnName="BRKR"/>
+      </attribute>
+      <attribute id="BRKR_NAME1" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUST_NAME1"/>
+        <keyMapping columnObjectName="GET_BROKERS" columnName="BRKR_NAME1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="92" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="GET_BROKERS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

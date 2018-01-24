@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SHIP_STATUS_EVENT" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SHIP_STATUS_EVENT"/>
+  <metadata changedAt="2018-01-24 10:28:43.385"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_SHIP_STATUS_EVENT_EDM">
+      <resourceUri>cos.db.models::CA_SHIP_STATUS_EVENT_EDM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TRIM_FRT_ORD_NUM">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FRT_ORD_DOC"/>
+        <viewAttribute id="SHIP_STATUS_EVENT_DESCR"/>
+        <viewAttribute id="SHIP_STATUS_EVENT_LOCN_REGN"/>
+        <viewAttribute id="SHIP_STATUS_EVENT_LOCN_CITY"/>
+        <viewAttribute id="SHIP_STATUS_EVENT_LOCN_CNTRY"/>
+        <viewAttribute id="SHIP_STATUS_EVENT_DATE"/>
+        <viewAttribute id="SHIP_STATUS_EVENT"/>
+        <viewAttribute id="SHIP_STATUS_EVENT_TIMEZONE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="TRIM_FRT_ORD" length="10" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;FRT_ORD_DOC&quot;,10)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SHIP_STATUS_EVENT_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_DOC" source="FRT_ORD_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_DESCR" source="SHIP_STATUS_EVENT_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_LOCN_REGN" source="SHIP_STATUS_EVENT_LOCN_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_LOCN_CITY" source="SHIP_STATUS_EVENT_LOCN_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_LOCN_CNTRY" source="SHIP_STATUS_EVENT_LOCN_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_DATE" source="SHIP_STATUS_EVENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT" source="SHIP_STATUS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_TIMEZONE" source="SHIP_STATUS_EVENT_TIMEZONE"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="TRIM_FRT_ORD_NUM">
+    <descriptions/>
+    <attributes>
+      <attribute id="FRT_ORD_DOC" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TRIM_FRT_ORD"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="TRIM_FRT_ORD"/>
+      </attribute>
+      <attribute id="SHIP_STATUS_EVENT_DESCR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_STATUS_EVENT_DESCR"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="SHIP_STATUS_EVENT_DESCR"/>
+      </attribute>
+      <attribute id="SHIP_STATUS_EVENT_LOCN_REGN" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_STATUS_EVENT_LOCN_REGN"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="SHIP_STATUS_EVENT_LOCN_REGN"/>
+      </attribute>
+      <attribute id="SHIP_STATUS_EVENT_LOCN_CITY" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_STATUS_EVENT_LOCN_CITY"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="SHIP_STATUS_EVENT_LOCN_CITY"/>
+      </attribute>
+      <attribute id="SHIP_STATUS_EVENT_LOCN_CNTRY" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_STATUS_EVENT_LOCN_CNTRY"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="SHIP_STATUS_EVENT_LOCN_CNTRY"/>
+      </attribute>
+      <attribute id="SHIP_STATUS_EVENT_DATE" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_STATUS_EVENT_DATE"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="SHIP_STATUS_EVENT_DATE"/>
+      </attribute>
+      <attribute id="SHIP_STATUS_EVENT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_STATUS_EVENT"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="SHIP_STATUS_EVENT"/>
+      </attribute>
+      <attribute id="SHIP_STATUS_EVENT_TIMEZONE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_STATUS_EVENT_TIMEZONE"/>
+        <keyMapping columnObjectName="TRIM_FRT_ORD_NUM" columnName="SHIP_STATUS_EVENT_TIMEZONE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="92" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TRIM_FRT_ORD_NUM" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

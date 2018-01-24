@@ -47,25 +47,25 @@
       "schema": "HEAP"
     }
   },
-   "cos.db.synonyms::CA_PLANT_V1": {
+  "cos.db.synonyms::CA_PLANT_V1": {
     "target": {
       "object": "CA_PLANT_V1",
       "schema": "HEAP"
     }
   },
-   "cos.db.synonyms::CA_REGN_V1": {
+  "cos.db.synonyms::CA_REGN_V1": {
     "target": {
       "object": "CA_REGN_V1",
       "schema": "HEAP"
     }
   },
-   "cos.db.synonyms::CA_SALES_POSN_V1": {
+  "cos.db.synonyms::CA_SALES_POSN_V1": {
     "target": {
       "object": "CA_SALES_POSN_V1",
       "schema": "HEAP"
     }
   },
-   "cos.db.synonyms::CA_SD_DOC_FLOW_V1": {
+  "cos.db.synonyms::CA_SD_DOC_FLOW_V1": {
     "target": {
       "object": "CA_SD_DOC_FLOW_V1",
       "schema": "HEAP"
@@ -125,7 +125,7 @@
       "schema": "HEAP"
     }
   },
-   "cos.db.synonyms::CA_FRT_ORD_LINE_DOC_DTL_V2": {
+  "cos.db.synonyms::CA_FRT_ORD_LINE_DOC_DTL_V2": {
     "target": {
       "object": "CA_FRT_ORD_LINE_DOC_DTL_V2",
       "schema": "HEAP"
@@ -152,6 +152,12 @@
   "cos.db.synonyms::CA_PLANT_V2": {
     "target": {
       "object": "CA_PLANT_V2",
+      "schema": "HEAP"
+    }
+  },
+  "cos.db.synonyms::VBUK": {
+    "target": {
+      "object": "VBUK",
       "schema": "HEAP"
     }
   }

@@ -1,0 +1,1655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SLS_ORDER_HDR" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SLS_FRT_ORDER_RSLT"/>
+  <metadata changedAt="2018-01-24 11:01:20.66"/>
+  <localVariables>
+    <variable id="IN_SALES_ORD" parameter="true">
+      <descriptions defaultDescription="IN_SALES_ORD"/>
+      <variableProperties datatype="NVARCHAR" length="10" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="59"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_SALES_ORDER_EDM">
+      <resourceUri>cos.db.models::CA_SALES_ORDER_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
+      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="Aggregation_2$$$$cos.db.models::CA_FRT_ORD_EDM$$">
+      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SD_DOC_FLOW_EDM">
+      <resourceUri>cos.db.models::CA_SD_DOC_FLOW_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_DELV_DOC_EDM">
+      <resourceUri>cos.db.models::CA_DELV_DOC_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SOLD_TO_CUST_FLTR">
+      <resourceUri>cos.db.models::CA_SOLD_TO_CUST_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SHIP_TO_CUST_FLTR">
+      <resourceUri>cos.db.models::CA_SHIP_TO_CUST_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_DISTN_CHAN_FLTR">
+      <resourceUri>cos.db.models::CA_DISTN_CHAN_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_DIVISION_FLTR">
+      <resourceUri>cos.db.models::CA_DIVISION_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SLS_POSN_FLTR">
+      <resourceUri>cos.db.models::CA_SLS_POSN_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_BROKER_FLTR">
+      <resourceUri>cos.db.models::CA_BROKER_FLTR</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_CSR_FLTR">
+      <resourceUri>cos.db.models::CA_CSR_FLTR</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SALES_ORDER_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT" source="SALES_ORD_LINE_NET_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL" source="SALES_ORD_LINE_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_LINE_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_LINE_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SALES_ORD_LINE_NET_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SALES_ORD_LINE_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <filter>&quot;SALES_ORD&quot; = '$$IN_SALES_ORD$$'</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="FRT_ORD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_FRT_ORD_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute aggregationType="sum" id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="SALES_ORD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Aggregation_2$$$$cos.db.models::CA_FRT_ORD_EDM$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_11">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="SALES_ORD_1"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_1" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+      </input>
+      <input node="Aggregation_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_1" source="SALES_ORD"/>
+      </input>
+      <joinAttribute name="SALES_ORD_1"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Join_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD_1"/>
+      </input>
+      <joinAttribute name="SALES_ORD"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SD_PRECEDING_DOC"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SD_DOC_FLOW_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_PRECEDING_DOC" source="SD_PRECEDING_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SD_PRECEDING_DOC"/>
+      </input>
+      <joinAttribute name="SALES_ORD"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DELV_DOC"/>
+        <viewAttribute id="DELV_DOC_PLAN_MOVEMENT_DATE"/>
+        <viewAttribute id="DELV_DOC_ACTL_MOVEMENT_DATE"/>
+        <viewAttribute id="BOL_DOC"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="PLAN_MOVEMENT_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;DELV_DOC_PLAN_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="ACTL_MOVEMENT_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;DELV_DOC_ACTL_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_DELV_DOC_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC" source="DELV_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_PLAN_MOVEMENT_DATE" source="DELV_DOC_PLAN_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_ACTL_MOVEMENT_DATE" source="DELV_DOC_ACTL_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="PLAN_MOVEMENT_DATE"/>
+        <viewAttribute id="ACTL_MOVEMENT_DATE"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLAN_MOVEMENT_DATE" source="PLAN_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTL_MOVEMENT_DATE" source="ACTL_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="DELV_DOC"/>
+      </input>
+      <joinAttribute name="SD_SUBSEQNT_DOC"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SOLD_TO_CUST_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="PLAN_MOVEMENT_DATE"/>
+        <viewAttribute id="ACTL_MOVEMENT_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="SHIP_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;ACTL_MOVEMENT_DATE&quot;),(if(isnull(&quot;PLAN_MOVEMENT_DATE&quot;),&quot;SALES_ORD_ITEM_LOADING_DATE&quot;,&quot;PLAN_MOVEMENT_DATE&quot;)),&quot;ACTL_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="ORDER_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;SALES_ORD_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLAN_MOVEMENT_DATE" source="PLAN_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTL_MOVEMENT_DATE" source="ACTL_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SHIP_DATE"/>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Aggregation_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_DATE" source="SHIP_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+      </input>
+      <joinAttribute name="SOLDTO"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SHIP_TO_CUST_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SHIP_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_DATE" source="SHIP_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+      </input>
+      <joinAttribute name="SHIPTO"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_8">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SOLDTO_STATE_ZIP" length="25" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;SOLDTO_ADDR_REGN&quot; +' '+ &quot;SOLDTO_ADDR_POSTAL_CODE&quot; +' '+ &quot;SOLDTO_ADDR_CNTRY&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SHIPTO_STATE_ZIP" length="25" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;SHIPTO_ADDR_REGN&quot; +' '+ &quot;SHIPTO_ADDR_POSTAL_CODE&quot; +' '+ &quot;SHIPTO_ADDR_CNTRY&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_9">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_DISTN_CHAN_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_STATE_ZIP"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_STATE_ZIP"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_STATE_ZIP" source="SOLDTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_STATE_ZIP" source="SHIPTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+      </input>
+      <joinAttribute name="DISTN_CHAN"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_10">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_DIVISION_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_STATE_ZIP"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_STATE_ZIP"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_STATE_ZIP" source="SOLDTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_STATE_ZIP" source="SHIPTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_10">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      </input>
+      <joinAttribute name="DIVISION"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_11">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_POSN"/>
+        <viewAttribute id="SLS_POSN_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SLS_POSN_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_POSN" source="SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_POSN_CONCAT" source="SLS_POSN_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_8" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_STATE_ZIP"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_STATE_ZIP"/>
+        <viewAttribute id="SLS_POSN_CONCAT"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_STATE_ZIP" source="SOLDTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_STATE_ZIP" source="SHIPTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_11">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_POSN_CONCAT" source="SLS_POSN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="SALES_POSN"/>
+      </input>
+      <joinAttribute name="HDR_SALES_POSN"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_12">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BRKR"/>
+        <viewAttribute id="BROKER_CONCAT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_BROKER_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BRKR" source="BRKR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BROKER_CONCAT" source="BROKER_CONCAT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_9" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_STATE_ZIP"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_STATE_ZIP"/>
+        <viewAttribute id="SLS_POSN_CONCAT"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="BROKER_CONCAT"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_8">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_STATE_ZIP" source="SOLDTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_STATE_ZIP" source="SHIPTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_POSN_CONCAT" source="SLS_POSN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_12">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BROKER_CONCAT" source="BROKER_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="BRKR"/>
+      </input>
+      <joinAttribute name="PRIM_BRKR"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="CSR_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_CSR_FLTR">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR_NAME" source="CSR_NAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_10" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ORDER_DATE"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SOLDTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_VOL_UOM"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_WT"/>
+        <viewAttribute id="SLS_ORDER_TOTAL_VOL"/>
+        <viewAttribute id="DISTN_CHAN_CONCAT"/>
+        <viewAttribute id="DIVISION_CONCAT"/>
+        <viewAttribute id="BOL_DOC"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET4"/>
+        <viewAttribute id="SOLDTO_ADDR_STREET5"/>
+        <viewAttribute id="SOLDTO_ADDR_CITY"/>
+        <viewAttribute id="SOLDTO_STATE_ZIP"/>
+        <viewAttribute id="SOLDTO_ADDR_REGN"/>
+        <viewAttribute id="SOLDTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SOLDTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="SHIPTO_STATE_ZIP"/>
+        <viewAttribute id="SLS_POSN_CONCAT"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="CSR_NAME"/>
+        <viewAttribute id="BROKER_CONCAT"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_9">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_NET_WT_UOM" source="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_VOL_UOM" source="SALES_ORD_ITEM_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_WT" source="SLS_ORDER_TOTAL_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_ORDER_TOTAL_VOL" source="SLS_ORDER_TOTAL_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BOL_DOC" source="BOL_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET" source="SOLDTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET4" source="SOLDTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_STREET5" source="SOLDTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CITY" source="SOLDTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_STATE_ZIP" source="SOLDTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_REGN" source="SOLDTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_POSTAL_CODE" source="SOLDTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_ADDR_CNTRY" source="SOLDTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_STATE_ZIP" source="SHIPTO_STATE_ZIP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SLS_POSN_CONCAT" source="SLS_POSN_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BROKER_CONCAT" source="BROKER_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR_NAME" source="CSR_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+      </input>
+      <joinAttribute name="CSR"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_10">
+    <descriptions/>
+    <attributes>
+      <attribute id="CUST_PO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUST_PO"/>
+        <keyMapping columnObjectName="Join_10" columnName="CUST_PO"/>
+      </attribute>
+      <attribute id="SOLDTO_CONCAT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_CONCAT"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_CONCAT"/>
+      </attribute>
+      <attribute id="SHIPTO_CONCAT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_CONCAT"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_CONCAT"/>
+      </attribute>
+      <attribute id="SALES_ORD_ITEM_NET_WT_UOM" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_ITEM_NET_WT_UOM"/>
+        <keyMapping columnObjectName="Join_10" columnName="SALES_ORD_ITEM_NET_WT_UOM"/>
+      </attribute>
+      <attribute id="SALES_ORD_ITEM_VOL_UOM" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_ITEM_VOL_UOM"/>
+        <keyMapping columnObjectName="Join_10" columnName="SALES_ORD_ITEM_VOL_UOM"/>
+      </attribute>
+      <attribute id="DISTN_CHAN_CONCAT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DISTN_CHAN_CONCAT"/>
+        <keyMapping columnObjectName="Join_10" columnName="DISTN_CHAN_CONCAT"/>
+      </attribute>
+      <attribute id="DIVISION_CONCAT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_CONCAT"/>
+        <keyMapping columnObjectName="Join_10" columnName="DIVISION_CONCAT"/>
+      </attribute>
+      <attribute id="BOL_DOC" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BOL_DOC"/>
+        <keyMapping columnObjectName="Join_10" columnName="BOL_DOC"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_STREET" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_ADDR_STREET"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_ADDR_STREET"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_STREET4" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_ADDR_STREET4"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_ADDR_STREET4"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_STREET5" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_ADDR_STREET5"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_ADDR_STREET5"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_CITY" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_ADDR_CITY"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_ADDR_CITY"/>
+      </attribute>
+      <attribute id="SOLDTO_STATE_ZIP" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_STATE_ZIP"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_STATE_ZIP"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_REGN" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_ADDR_REGN"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_ADDR_REGN"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_POSTAL_CODE" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_ADDR_POSTAL_CODE"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_ADDR_POSTAL_CODE"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_CNTRY" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_ADDR_CNTRY"/>
+        <keyMapping columnObjectName="Join_10" columnName="SOLDTO_ADDR_CNTRY"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_ADDR_STREET"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET4" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET4"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_ADDR_STREET4"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET5" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET5"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_ADDR_STREET5"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_CITY" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_CITY"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_ADDR_CITY"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_REGN" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_REGN"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_ADDR_REGN"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_POSTAL_CODE" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_POSTAL_CODE"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_ADDR_POSTAL_CODE"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_CNTRY" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_CNTRY"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_ADDR_CNTRY"/>
+      </attribute>
+      <attribute id="SHIPTO_STATE_ZIP" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_STATE_ZIP"/>
+        <keyMapping columnObjectName="Join_10" columnName="SHIPTO_STATE_ZIP"/>
+      </attribute>
+      <attribute id="SLS_POSN_CONCAT" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SLS_POSN_CONCAT"/>
+        <keyMapping columnObjectName="Join_10" columnName="SLS_POSN_CONCAT"/>
+      </attribute>
+      <attribute id="CSR_NAME" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CSR_NAME"/>
+        <keyMapping columnObjectName="Join_10" columnName="CSR_NAME"/>
+      </attribute>
+      <attribute id="BROKER_CONCAT" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BROKER_CONCAT"/>
+        <keyMapping columnObjectName="Join_10" columnName="BROKER_CONCAT"/>
+      </attribute>
+      <attribute id="SALES_ORD_HDR_STATUS" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Overall rejection status of all document items"/>
+        <keyMapping columnObjectName="Join_10" columnName="SALES_ORD_HDR_STATUS"/>
+      </attribute>
+      <attribute id="SALES_ORD_TYPE" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_TYPE"/>
+        <keyMapping columnObjectName="Join_10" columnName="SALES_ORD_TYPE"/>
+      </attribute>
+      <attribute id="FRT_ORD" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_10" columnName="FRT_ORD"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_SRC_LOCN" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_10" columnName="FRT_ORD_LINE_SRC_LOCN"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_PIECE_QTY" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_10" columnName="FRT_ORD_LINE_PIECE_QTY"/>
+      </attribute>
+      <attribute id="HDR_SALES_POSN" order="38" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HDR_SALES_POSN"/>
+        <keyMapping columnObjectName="Join_10" columnName="HDR_SALES_POSN"/>
+      </attribute>
+      <attribute id="SALES_ORD" order="39" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DOC"/>
+        <keyMapping columnObjectName="Join_10" columnName="SALES_ORD"/>
+      </attribute>
+      <attribute id="SALES_ORD_TYPE_DESCR" order="40" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_TYPE_DESCR"/>
+        <keyMapping columnObjectName="Join_10" columnName="SALES_ORD_TYPE_DESCR"/>
+      </attribute>
+      <attribute id="PRIM_BRKR" order="41" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HDR_PRIM_BRKR"/>
+        <keyMapping columnObjectName="Join_10" columnName="PRIM_BRKR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="SALES_ORD_HDR_STATUS_CONCAT" hidden="false" order="32" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_HDR_STATUS_CONCAT"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="250">
+          <formula>case(&quot;SALES_ORD_HDR_STATUS&quot;,'A', 'Not Rejected', 'B', 'B - Partially Rejected', 'C', 'C - Completely Rejected', &quot;SALES_ORD_HDR_STATUS&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ORDER_DATE" order="1" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="ORDER_DATE"/>
+        <measureMapping columnObjectName="Join_10" columnName="ORDER_DATE"/>
+      </measure>
+      <measure id="SLS_ORDER_TOTAL_WT" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SLS_ORDER_TOTAL_WT"/>
+        <measureMapping columnObjectName="Join_10" columnName="SLS_ORDER_TOTAL_WT"/>
+      </measure>
+      <measure id="SLS_ORDER_TOTAL_VOL" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SLS_ORDER_TOTAL_VOL"/>
+        <measureMapping columnObjectName="Join_10" columnName="SLS_ORDER_TOTAL_VOL"/>
+      </measure>
+      <measure id="SALES_ORD_LINE_QTY" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_ORD_LINE_QTY"/>
+        <measureMapping columnObjectName="Join_10" columnName="SALES_ORD_LINE_QTY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="496.06953308739446" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="364.43638633871507" y="1627"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92.00000000000006" y="1747"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="282.00000000000006" y="1747"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="115.33333333333331" y="1627"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_11" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Aggregation_2" modelObjectNameSpace="Join_11" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="138.66666666666657" y="1507"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Join_11" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="475.02323195587104" y="1507"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="161.9999999999999" y="1387"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="607.608284508972" y="1387"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="567.60702568944" y="1267"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="494.643988171153" y="1162"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="684.6439881711531" y="1162"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="611.0577998299148" y="1042"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Aggregation_4" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="421.05779982991476" y="1042"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="460.2478640684185" y="922"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_7" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="460.2478640684185" y="817"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="270.24786406841844" y="817"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="293.58119740175175" y="697"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_8" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_9" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="510.1680763742183" y="697"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="486.83474304088503" y="577"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_10" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_11" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="243.65008059845763" y="577"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="266.983413931791" y="457"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_11" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_12" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="456.983413931791" y="457"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="290.3167472651244" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_12" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="548.7724539347805" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="496.06953308739446" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    
+      <shape modelObjectName="Join_9" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

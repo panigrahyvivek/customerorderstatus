@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SD_DOC_FLOW_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SD_DOC_FLOW_EDM"/>
+  <metadata changedAt="2018-01-24 10:33:41.716"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::CA_SD_DOC_FLOW_V1">
+      <resourceUri>cos.db.synonyms::CA_SD_DOC_FLOW_V1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SD_PRECEDING_DOC"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC_CAT"/>
+        <viewAttribute id="SD_DOC_FLOW_LEVEL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.synonyms::CA_SD_DOC_FLOW_V1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_PRECEDING_DOC" source="SD_PRECEDING_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC_CAT" source="SD_SUBSEQNT_DOC_CAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_DOC_FLOW_LEVEL" source="SD_DOC_FLOW_LEVEL"/>
+      </input>
+      <filter>(&quot;SD_SUBSEQNT_DOC_CAT&quot; ='J') AND (&quot;SD_DOC_FLOW_LEVEL&quot; ='00')</filter>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SD_PRECEDING_DOC" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SD_PRECEDING_DOC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SD_PRECEDING_DOC"/>
+      </attribute>
+      <attribute id="SD_SUBSEQNT_DOC" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SD_SUBSEQNT_DOC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SD_SUBSEQNT_DOC"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="92" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

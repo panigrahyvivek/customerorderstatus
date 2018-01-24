@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_DISTN_CHAN_FLTR" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_DISTRIBUTION_CHANNEL"/>
+  <metadata changedAt="2018-01-24 10:21:20.903"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_DISTN_CHAN_EDM">
+      <resourceUri>cos.db.models::CA_DISTN_CHAN_EDM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="cos.db.models::CA_DISTN_CHAN_EDM">
+    <descriptions/>
+    <attributes>
+      <attribute id="DISTN_CHAN" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Distribution Channel Code"/>
+        <keyMapping columnObjectName="CA_DISTN_CHAN_EDM" columnName="DISTN_CHAN"/>
+      </attribute>
+      <attribute id="DISTN_CHAN_DESCR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Distribution Channel Description"/>
+        <keyMapping columnObjectName="CA_DISTN_CHAN_EDM" columnName="DISTN_CHAN_DESCR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="DISTN_CHAN_CONCAT" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DISTN_CHAN_CONCAT"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="25">
+          <formula>&quot;DISTN_CHAN&quot; +' - '+ &quot;DISTN_CHAN_DESCR&quot;</formula>
+        </keyCalculation>
+        </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

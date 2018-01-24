@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SOLD_TO_CUST_FLTR" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SOLD_TO_FLTR"/>
+  <metadata changedAt="2018-01-24 10:46:56.617"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_CUST_SOLDTO_EDM">
+      <resourceUri>cos.db.models::CA_CUST_SOLDTO_EDM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="cos.db.models::CA_CUST_SOLDTO_EDM">
+    <descriptions/>
+    <attributes>
+      <attribute id="SOLDTO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUST_NUM"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO"/>
+      </attribute>
+      <attribute id="SOLDTO_NAME1" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUST_NAME1"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_NAME1"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_STREET" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUST_ADDR_STREET"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_ADDR_STREET"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_STREET4" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ADDR_STREET_4"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_ADDR_STREET4"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_STREET5" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ADDR_STREET_5"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_ADDR_STREET5"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_CITY" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ADDR_CITY_1"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_ADDR_CITY"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_POSTAL_CODE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ADDR_POSTAL_CODE_1"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_ADDR_POSTAL_CODE"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_REGN" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ADDR_REGION"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_ADDR_REGN"/>
+      </attribute>
+      <attribute id="SOLDTO_ADDR_CNTRY" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ADDR_COUNTRY_CODE"/>
+        <keyMapping columnObjectName="CA_CUST_SOLDTO_EDM" columnName="SOLDTO_ADDR_CNTRY"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="SOLDTO_CONCAT" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO_CONCAT"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="50">
+          <formula>&quot;SOLDTO&quot; +' - '+ &quot;SOLDTO_NAME1&quot;</formula>
+        </keyCalculation>
+        </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

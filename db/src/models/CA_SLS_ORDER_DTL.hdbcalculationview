@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SLS_ORDER_DTL" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SLS_ORD_DISPLAY"/>
+  <metadata changedAt="2018-01-24 10:52:26.051"/>
+  <localVariables>
+    <variable id="IN_SALES_ORD" parameter="true">
+      <descriptions defaultDescription="IN_SALES_ORD"/>
+      <variableProperties datatype="NVARCHAR" length="10" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="45"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_SALES_ORDER_EDM">
+      <resourceUri>cos.db.models::CA_SALES_ORDER_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM">
+      <resourceUri>cos.db.models::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
+      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SD_DOC_FLOW_EDM">
+      <resourceUri>cos.db.models::CA_SD_DOC_FLOW_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_DELV_DOC_EDM">
+      <resourceUri>cos.db.models::CA_DELV_DOC_EDM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SALES_ORDER_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY_UOM" source="SALES_ORD_LINE_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SHIP_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+      <filter>&quot;SALES_ORD&quot; = '$$IN_SALES_ORD$$'</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="MTRL_DESCR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="MTRL_DESCR"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_ITEM_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY_UOM" source="SALES_ORD_ITEM_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+      </input>
+      <joinAttribute name="MTRL"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="MTRL_DESCR"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_ITEM_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY_UOM" source="SALES_ORD_ITEM_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_FRT_ORD_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_UOM" source="FRT_ORD_LINE_PIECE_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="MTRL_DESCR"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_ITEM_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY_UOM" source="SALES_ORD_ITEM_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+      <input node="Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_UOM" source="FRT_ORD_LINE_PIECE_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_LINE"/>
+      </input>
+      <joinAttribute name="SALES_ORD"/>
+      <joinAttribute name="SALES_ORD_DOC_LINE_ITEM"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SD_PRECEDING_DOC"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SD_DOC_FLOW_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_PRECEDING_DOC" source="SD_PRECEDING_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="MTRL_DESCR"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_ITEM_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY_UOM" source="SALES_ORD_ITEM_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_UOM" source="FRT_ORD_LINE_PIECE_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+      <input node="Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SD_PRECEDING_DOC"/>
+      </input>
+      <joinAttribute name="SALES_ORD"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_7">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DELV_DOC"/>
+        <viewAttribute id="DELV_DOC_PLAN_MOVEMENT_DATE"/>
+        <viewAttribute id="DELV_DOC_ACTL_MOVEMENT_DATE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="PLAN_MOVEMENT_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;DELV_DOC_PLAN_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="ACTL_MOVEMENT_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;DELV_DOC_ACTL_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_DELV_DOC_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC" source="DELV_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_PLAN_MOVEMENT_DATE" source="DELV_DOC_PLAN_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_ACTL_MOVEMENT_DATE" source="DELV_DOC_ACTL_MOVEMENT_DATE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="MTRL_DESCR"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="PLAN_MOVEMENT_DATE"/>
+        <viewAttribute id="SD_SUBSEQNT_DOC"/>
+        <viewAttribute id="ACTL_MOVEMENT_DATE"/>
+        <viewAttribute id="SALES_ORD_ITEM_LOADING_DATE"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="SHIP_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;ACTL_NULL&quot; = 1,if(&quot;PLAN_NULL&quot; = 1, &quot;SALES_ORD_ITEM_LOADING_DATE&quot;, &quot;PLAN_MOVEMENT_DATE&quot;), &quot;ACTL_MOVEMENT_DATE&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="TINYINT" id="ACTL_NULL" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(trim(string(&quot;ACTL_MOVEMENT_DATE&quot;))) or trim(string(&quot;ACTL_MOVEMENT_DATE&quot;)) = '',1,0)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="TINYINT" id="PLAN_NULL" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isNull(trim(string(&quot;PLAN_MOVEMENT_DATE&quot;))) or  trim(string(&quot;PLAN_MOVEMENT_DATE&quot;)) = '',1,0)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_ITEM_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY_UOM" source="SALES_ORD_ITEM_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_LOADING_DATE" source="SALES_ORD_ITEM_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_UOM" source="FRT_ORD_LINE_PIECE_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+      <input node="Projection_7">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLAN_MOVEMENT_DATE" source="PLAN_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTL_MOVEMENT_DATE" source="ACTL_MOVEMENT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="DELV_DOC"/>
+      </input>
+      <joinAttribute name="SD_SUBSEQNT_DOC"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="MTRL_DESCR"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY"/>
+        <viewAttribute id="SALES_ORD_ITEM_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_ITEM_DELV_PLANT"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_UOM"/>
+        <viewAttribute id="SHIP_DATE"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SALES_ORD_LINE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_ITEM_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY_UOM" source="SALES_ORD_ITEM_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_DELV_PLANT" source="SALES_ORD_ITEM_DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_UOM" source="FRT_ORD_LINE_PIECE_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_DATE" source="SHIP_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE" source="SALES_ORD_LINE"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Aggregation_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SALES_ORD" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ORD"/>
+      </attribute>
+      <attribute id="MTRL" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MTRL"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MTRL"/>
+      </attribute>
+      <attribute id="MTRL_DESCR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MTRL_DESCR"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="MTRL_DESCR"/>
+      </attribute>
+      <attribute id="SALES_ORD_ITEM_QTY" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_ITEM_QTY"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ORD_ITEM_QTY"/>
+      </attribute>
+      <attribute id="SALES_ORD_ITEM_QTY_UOM" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_ITEM_QTY_UOM"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ORD_ITEM_QTY_UOM"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_PIECE_QTY" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_PIECE_QTY"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="FRT_ORD_LINE_PIECE_QTY"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_PIECE_UOM" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_PIECE_UOM"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="FRT_ORD_LINE_PIECE_UOM"/>
+      </attribute>
+      <attribute id="SALES_ORD_ITEM_DELV_PLANT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_ITEM_DELV_PLANT"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ORD_ITEM_DELV_PLANT"/>
+      </attribute>
+      <attribute id="SHIP_DATE" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_DATE"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SHIP_DATE"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE_REJECT_REASON" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ORD_LINE_REJECT_REASON"/>
+      </attribute>
+      <attribute id="SALES_ORD_DOC_LINE_ITEM" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DOC_LINE_ITEM"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ORD_DOC_LINE_ITEM"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_LINE_ITEM_CAT"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ORD_LINE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="SALES_ORD_LINE_REJECT_REASON_CONCAT" hidden="false" order="11" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_LINE_REJECT_REASON_CONCAT"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="250">
+          <formula>case(&quot;SALES_ORD_LINE_REJECT_REASON&quot;,'','Not Rejected'
+                                                                               , 'Z0', 'Z0 - Customer Cancellation' 
+                                                                               , 'Z1', 'Z1 - Item Not Authorized'
+                                                                               , 'Z2', 'Z2 - Wrong Product'
+                                                                               , 'Z3', 'Z3 - Zero Available at Delivery'
+                                                                               , 'Z4', 'Z4 - Zero Available at Order'
+                                                                               , 'Z5', 'Z5 - Cobb'
+                                                                               , 'Z6', 'Z6 - Close Open Item'
+                                                                               , 'Z7', 'Z7 - Deleted Material'
+                                                                               , 'Z8', 'Z8 - Credit'
+                                                                               , 'Z9', 'Z9 - Material Substitution'
+                                                                               , 'ZA', 'ZA - Duplicate Order'
+                                                                               , 'ZB', 'ZB - Incorrect Sales Area'
+                                                                               , &quot;SALES_ORD_LINE_REJECT_REASON&quot;)
+ 
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="304.8579676078742" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="133.95767030877505" y="907"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="323.95767030877505" y="907"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="185.78650327283088" y="787"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="185.78650327283083" y="682"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="375.7865032728309" y="682"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="289.573876162216" y="562"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="91.99999999999997" y="562"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="115.33333333333329" y="442"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_6" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="350.55461251192963" y="442"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="291.5863324358341" y="322"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_7" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="291.5863324358341" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

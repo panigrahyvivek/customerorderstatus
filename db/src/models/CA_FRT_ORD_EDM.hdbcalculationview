@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_FRT_ORD_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_FRT_ORD_EDM."/>
+  <metadata changedAt="2018-01-24 10:24:44.715"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::CA_FRT_ORD_CACHE_V1">
+      <resourceUri>cos.db.synonyms::CA_FRT_ORD_CACHE_V1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="GET_FRT_ORDERS">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_CITY"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_REGN"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_DROP"/>
+        <viewAttribute id="CARRIER"/>
+        <viewAttribute id="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_VOL"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_WT"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_QTY"/>
+        <viewAttribute id="FRT_ORD_LINE_PIECE_UOM"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="SALES_ORD_LINE_ITEM"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="FRT_ORD_CONVERT" length="10" expressionLanguage="COLUMN_ENGINE">
+          <formula>rightstr(&quot;FRT_ORD&quot;,10)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="MTRL_CONVERT" length="11" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(instr(&quot;MTRL&quot;,'-'),&quot;MTRL&quot;, rightstr(&quot;MTRL&quot;,10))</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.synonyms::CA_FRT_ORD_CACHE_V1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_CITY" source="FRT_ORD_LINE_DEST_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_REGN" source="FRT_ORD_LINE_DEST_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_DROP" source="FRT_ORD_LINE_DEST_DROP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_TRANSPRTN_MODE_DESCR" source="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE" source="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_APPT_TIME" source="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL" source="FRT_ORD_LINE_GRS_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL_UOM" source="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT" source="FRT_ORD_LINE_GRS_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT_UOM" source="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_UOM" source="FRT_ORD_LINE_PIECE_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME" source="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="GET_FRT_ORDERS">
+    <descriptions/>
+    <attributes>
+      <attribute id="FRT_ORD_LINE_SRC_LOCN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_SRC_LOCN"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_SRC_LOCN"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_DEST_CITY" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_DEST_CITY"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_DEST_CITY"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_DEST_REGN" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_DEST_REGN"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_DEST_REGN"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_DEST_DROP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_DEST_DROP"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_DEST_DROP"/>
+      </attribute>
+      <attribute id="CARRIER" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CARRIER"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="CARRIER"/>
+      </attribute>
+      <attribute id="FRT_ORD_TRANSPRTN_MODE_DESCR" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE_CONV"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_DEST_APPT_TIME" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_DEST_APPT_TIME_CONV"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_DEST_APPT_TIME"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_GRS_VOL" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_VOL"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_GRS_VOL"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_GRS_VOL_UOM" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_GRS_VOL_UOM"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_GRS_WT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_WT"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_GRS_WT"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_GRS_WT_UOM" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_GRS_WT_UOM"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_PIECE_QTY" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_PIECE_QTY"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_PIECE_QTY"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_PIECE_UOM" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_PIECE_UOM"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_PIECE_UOM"/>
+      </attribute>
+      <attribute id="SALES_ORD" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="SALES_ORD"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DOC_LINE_ITEM"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="SALES_ORD_LINE_ITEM"/>
+      </attribute>
+      <attribute id="FRT_ORD" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_CONVERT"/>
+      </attribute>
+      <attribute id="MTRL" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MTRL"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="MTRL"/>
+      </attribute>
+      <attribute id="MTRL_CONVERT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="MTRL_CONVERT"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME"/>
+        <keyMapping columnObjectName="GET_FRT_ORDERS" columnName="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="FRT_ORD_CONVERT" hidden="false" order="17" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_CONVERT"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>rightstr(&quot;FRT_ORD&quot;,10)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="92" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="GET_FRT_ORDERS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

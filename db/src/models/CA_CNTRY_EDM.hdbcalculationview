@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_CNTRY_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_CNTRY_EDM"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::CA_CNTRY_V1">
+      <resourceUri>cos.db.synonyms::CA_CNTRY_V1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="cos.db.synonyms::CA_CNTRY_V1">
+    <attributes>
+      <attribute id="CNTRY" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Country Key"/>
+        <keyMapping columnObjectName="CA_CNTRY_V1" columnName="CNTRY"/>
+      </attribute>
+      <attribute id="ISO_CNTRY_ALPHA2" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Country ISO code"/>
+        <keyMapping columnObjectName="CA_CNTRY_V1" columnName="ISO_CNTRY_ALPHA2"/>
+      </attribute>
+      <attribute id="ISO_CNTRY_ALPHA3" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ISO country code 3 char"/>
+        <keyMapping columnObjectName="CA_CNTRY_V1" columnName="ISO_CNTRY_ALPHA3"/>
+      </attribute>
+      <attribute id="ISO_CNTRY_LONG_NAME" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Country Name (Max. 50 Characters)"/>
+        <keyMapping columnObjectName="CA_CNTRY_V1" columnName="ISO_CNTRY_LONG_NAME"/>
+      </attribute>
+      <attribute id="ISO_CNTRY_NAME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Country Name"/>
+        <keyMapping columnObjectName="CA_CNTRY_V1" columnName="ISO_CNTRY_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

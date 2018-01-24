@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SALES_ORDER_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SALES_ORDER_EDM"/>
+  <metadata changedAt="2018-01-24 10:23:43.746"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="48"/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::VBUK">
+      <resourceUri>cos.db.synonyms::VBUK</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.synonyms::CA_SALES_ORDER_V2">
+      <resourceUri>cos.db.synonyms::CA_SALES_ORDER_V2</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="GET_SALES_ORD_STATUS">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="VBELN"/>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.synonyms::VBUK">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VBELN" source="VBELN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="ABSTK"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SHIP_PLANT"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="SALES_ORD_LINE_VOL_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_VOL"/>
+        <viewAttribute id="SALES_ORD_LINE_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_NET_WT"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_LINE_ITEM_CAT"/>
+        <viewAttribute id="SALES_ORD_DOC"/>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="PRIM_BRKR"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_DELV_BLK"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.synonyms::CA_SALES_ORDER_V2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_SCHED_LINE_LOADING_DATE" source="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_PLANT" source="SHIP_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_VOL_UOM" source="SALES_ORD_LINE_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_VOL" source="SALES_ORD_LINE_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_NET_WT_UOM" source="SALES_ORD_LINE_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_NET_WT" source="SALES_ORD_LINE_NET_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY_UOM" source="SALES_ORD_LINE_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_ITEM_CAT" source="SALES_ORD_LINE_ITEM_CAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC" source="SALES_ORD_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="HDR_PRIM_BRKR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DELV_BLK" source="SALES_ORD_DELV_BLK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+      </input>
+      <filter>date(&quot;SALES_ORD_DATE&quot;) &gt; adddays(now(), -91) AND (&quot;SALES_ORD_DELV_BLK&quot; != 'Y1')</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD_HDR_STATUS"/>
+        <viewAttribute id="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <viewAttribute id="MTRL"/>
+        <viewAttribute id="SHIP_PLANT"/>
+        <viewAttribute id="SALES_ORD_DOC_LINE_ITEM"/>
+        <viewAttribute id="SALES_ORD_LINE_ITEM_CAT"/>
+        <viewAttribute id="SALES_ORD_LINE_REJECT_REASON"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY"/>
+        <viewAttribute id="SALES_ORD_LINE_QTY_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_NET_WT"/>
+        <viewAttribute id="SALES_ORD_LINE_NET_WT_UOM"/>
+        <viewAttribute id="SALES_ORD_LINE_VOL"/>
+        <viewAttribute id="SALES_ORD_LINE_VOL_UOM"/>
+        <viewAttribute id="SALES_ORD_DOC"/>
+        <viewAttribute id="SALES_ORD_DATE"/>
+        <viewAttribute id="SALES_ORD_TYPE"/>
+        <viewAttribute id="SALES_ORD_REQ_DELV_DATE"/>
+        <viewAttribute id="DISTN_CHAN"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SOLDTO"/>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="HDR_SALES_POSN"/>
+        <viewAttribute id="CSR"/>
+        <viewAttribute id="HDR_PRIM_BRKR"/>
+        <viewAttribute id="CUST_PO"/>
+        <viewAttribute id="SALES_ORD_DELV_BLK"/>
+        <viewAttribute id="SALES_ORD_TYPE_DESCR"/>
+        <viewAttribute hidden="true" id="JOIN$VBELN$SALES_ORD_DOC"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="GET_SALES_ORD_STATUS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_HDR_STATUS" source="SALES_ORD_HDR_STATUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$SALES_ORD_DOC" source="VBELN"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_SCHED_LINE_LOADING_DATE" source="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_PLANT" source="SHIP_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC_LINE_ITEM" source="SALES_ORD_DOC_LINE_ITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_ITEM_CAT" source="SALES_ORD_LINE_ITEM_CAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_REJECT_REASON" source="SALES_ORD_LINE_REJECT_REASON"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY" source="SALES_ORD_LINE_QTY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_QTY_UOM" source="SALES_ORD_LINE_QTY_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_NET_WT" source="SALES_ORD_LINE_NET_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_NET_WT_UOM" source="SALES_ORD_LINE_NET_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_VOL" source="SALES_ORD_LINE_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_LINE_VOL_UOM" source="SALES_ORD_LINE_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DOC" source="SALES_ORD_DOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DATE" source="SALES_ORD_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE" source="SALES_ORD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_REQ_DELV_DATE" source="SALES_ORD_REQ_DELV_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_SALES_POSN" source="HDR_SALES_POSN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CSR" source="CSR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HDR_PRIM_BRKR" source="PRIM_BRKR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUST_PO" source="CUST_PO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_DELV_BLK" source="SALES_ORD_DELV_BLK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_TYPE_DESCR" source="SALES_ORD_TYPE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VBELN$SALES_ORD_DOC" source="SALES_ORD_DOC"/>
+      </input>
+      <joinAttribute name="JOIN$VBELN$SALES_ORD_DOC"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SALES_ORD_HDR_STATUS" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Overall rejection status of all document items"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_HDR_STATUS"/>
+      </attribute>
+      <attribute id="MTRL" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MTRL"/>
+        <keyMapping columnObjectName="Join_1" columnName="MTRL"/>
+      </attribute>
+      <attribute id="SHIP_PLANT" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIP_PLANT"/>
+        <keyMapping columnObjectName="Join_1" columnName="SHIP_PLANT"/>
+      </attribute>
+      <attribute id="SALES_ORD_DOC_LINE_ITEM" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DOC_LINE_ITEM"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_DOC_LINE_ITEM"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_LINE_ITEM_CAT"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_ITEM_CAT"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE_REJECT_REASON" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_LINE_REJECT_REASON"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_REJECT_REASON"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE_QTY_UOM" order="9" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_LINE_QTY_UOM"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_QTY_UOM"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE_NET_WT_UOM" order="11" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_LINE_NET_WT_UOM"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_NET_WT_UOM"/>
+      </attribute>
+      <attribute id="SALES_ORD_LINE_VOL_UOM" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_LINE_VOL_UOM"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_VOL_UOM"/>
+      </attribute>
+      <attribute id="SALES_ORD" order="14" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DOC"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_DOC"/>
+      </attribute>
+      <attribute id="SALES_ORD_DATE" order="15" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DATE"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_DATE"/>
+      </attribute>
+      <attribute id="SALES_ORD_TYPE" order="16" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_TYPE"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_TYPE"/>
+      </attribute>
+      <attribute id="SALES_ORD_REQ_DELV_DATE" order="17" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_REQ_DELV_DATE"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_REQ_DELV_DATE"/>
+      </attribute>
+      <attribute id="DISTN_CHAN" order="18" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DISTN_CHAN"/>
+        <keyMapping columnObjectName="Join_1" columnName="DISTN_CHAN"/>
+      </attribute>
+      <attribute id="DIVISION" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Join_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="SOLDTO" order="20" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SOLDTO"/>
+        <keyMapping columnObjectName="Join_1" columnName="SOLDTO"/>
+      </attribute>
+      <attribute id="SHIPTO" order="21" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO"/>
+        <keyMapping columnObjectName="Join_1" columnName="SHIPTO"/>
+      </attribute>
+      <attribute id="HDR_SALES_POSN" order="22" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HDR_SALES_POSN"/>
+        <keyMapping columnObjectName="Join_1" columnName="HDR_SALES_POSN"/>
+      </attribute>
+      <attribute id="CSR" order="23" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CSR"/>
+        <keyMapping columnObjectName="Join_1" columnName="CSR"/>
+      </attribute>
+      <attribute id="PRIM_BRKR" order="24" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HDR_PRIM_BRKR"/>
+        <keyMapping columnObjectName="Join_1" columnName="HDR_PRIM_BRKR"/>
+      </attribute>
+      <attribute id="CUST_PO" order="25" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUST_PO"/>
+        <keyMapping columnObjectName="Join_1" columnName="CUST_PO"/>
+      </attribute>
+      <attribute id="SALES_ORD_DELV_BLK" order="26" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_DELV_BLK"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_DELV_BLK"/>
+      </attribute>
+      <attribute id="SALES_ORD_TYPE_DESCR" order="27" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD_TYPE_DESCR"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_ORD_TYPE_DESCR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="SALES_ORD_SCHED_LINE_LOADING_DATE" order="2" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_ORD_SCHED_LINE_LOADING_DATE"/>
+      </measure>
+      <measure id="SALES_ORD_LINE_QTY" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_ORD_LINE_QTY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_QTY"/>
+      </measure>
+      <measure id="SALES_ORD_LINE_NET_WT" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_ORD_LINE_NET_WT"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_NET_WT"/>
+      </measure>
+      <measure id="SALES_ORD_LINE_VOL" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_ORD_LINE_VOL"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_ORD_LINE_VOL"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="212.295686309074" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="GET_SALES_ORD_STATUS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="91.99999999999997" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="281.99999999999994" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="212.295686309074" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    
+      <shape modelObjectName="GET_SALES_ORD_STATUS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

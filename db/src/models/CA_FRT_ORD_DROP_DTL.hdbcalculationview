@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_FRT_ORD_DROP_DTL" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_FRT_ORD_DROP_DTL"/>
+  <metadata changedAt="2018-01-24 10:27:21.485"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="39"/>
+  <dataSources>
+    <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
+      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_PLANT_EDM">
+      <resourceUri>cos.db.models::CA_PLANT_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_SALES_ORDER_EDM">
+      <resourceUri>cos.db.models::CA_SALES_ORDER_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models::CA_VEND_CARRIER_EDM">
+      <resourceUri>cos.db.models::CA_VEND_CARRIER_EDM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE"/>
+        <viewAttribute id="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <viewAttribute id="CARRIER"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_DROP"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_CITY"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_REGN"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_VOL"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_WT"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <viewAttribute id="MTRL_CONVERT"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="DEPARTURE_DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>date(&quot;FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="DELV_LOC" length="45" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;FRT_ORD_LINE_DEST_CITY&quot; +' '+&quot;FRT_ORD_LINE_DEST_REGN&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="CARGO_WT" length="45" expressionLanguage="COLUMN_ENGINE">
+          <formula>string(&quot;GRS_WT_CONV&quot;) +' '+ &quot;FRT_ORD_LINE_GRS_WT_UOM&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="GRS_VOL_CONV" length="31" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;FRT_ORD_LINE_GRS_VOL&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DECIMAL" id="GRS_WT_CONV" length="31" scale="2" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;FRT_ORD_LINE_GRS_WT&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="CARGO_VOL" length="45" expressionLanguage="COLUMN_ENGINE">
+          <formula>string(&quot;GRS_VOL_CONV&quot;) +' '+ &quot;FRT_ORD_LINE_GRS_VOL_UOM&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_FRT_ORD_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE" source="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_TRANSPRTN_MODE_DESCR" source="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_DROP" source="FRT_ORD_LINE_DEST_DROP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_CITY" source="FRT_ORD_LINE_DEST_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_REGN" source="FRT_ORD_LINE_DEST_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_APPT_TIME" source="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL" source="FRT_ORD_LINE_GRS_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL_UOM" source="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT" source="FRT_ORD_LINE_GRS_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT_UOM" source="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_CONVERT" source="MTRL_CONVERT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME" source="FRT_ORD_LINE_SRC_DEADLINE_DEPART_TIME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="PLANT_NAME1"/>
+        <viewAttribute id="PLANT_SHIP_POINT"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_PLANT_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT_NAME1" source="PLANT_NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT_SHIP_POINT" source="PLANT_SHIP_POINT"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_SALES_ORDER_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <viewAttribute id="CARRIER"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_DROP"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <viewAttribute id="MTRL_CONVERT"/>
+        <viewAttribute id="DEPARTURE_DATE"/>
+        <viewAttribute id="DELV_LOC"/>
+        <viewAttribute id="CARGO_WT"/>
+        <viewAttribute id="GRS_VOL_CONV"/>
+        <viewAttribute id="GRS_WT_CONV"/>
+        <viewAttribute id="CARGO_VOL"/>
+        <viewAttribute id="FRT_ORD_LINE_SRC_LOCN"/>
+        <viewAttribute id="PRIM_BRKR"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute hidden="true" id="JOIN$SALES_ORD$SALES_ORD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SALES_ORD$SALES_ORD" source="SALES_ORD"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_TRANSPRTN_MODE_DESCR" source="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_DROP" source="FRT_ORD_LINE_DEST_DROP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_APPT_TIME" source="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL_UOM" source="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT_UOM" source="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_CONVERT" source="MTRL_CONVERT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTURE_DATE" source="DEPARTURE_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_LOC" source="DELV_LOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARGO_WT" source="CARGO_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRS_VOL_CONV" source="GRS_VOL_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRS_WT_CONV" source="GRS_WT_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARGO_VOL" source="CARGO_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SALES_ORD$SALES_ORD" source="SALES_ORD"/>
+      </input>
+      <joinAttribute name="JOIN$SALES_ORD$SALES_ORD"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PLANT_NAME1"/>
+        <viewAttribute id="PLANT"/>
+        <viewAttribute id="CARGO_VOL"/>
+        <viewAttribute id="GRS_WT_CONV"/>
+        <viewAttribute id="GRS_VOL_CONV"/>
+        <viewAttribute id="CARGO_WT"/>
+        <viewAttribute id="DELV_LOC"/>
+        <viewAttribute id="DEPARTURE_DATE"/>
+        <viewAttribute id="MTRL_CONVERT"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_DROP"/>
+        <viewAttribute id="CARRIER"/>
+        <viewAttribute id="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="PRIM_BRKR"/>
+        <viewAttribute id="SALES_ORD"/>
+        <viewAttribute hidden="true" id="JOIN$PLANT_SHIP_POINT$FRT_ORD_LINE_SRC_LOCN"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="DELV_PLANT" length="95" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;PLANT&quot; +' '+ &quot;PLANT_NAME1&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT_NAME1" source="PLANT_NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PLANT_SHIP_POINT$FRT_ORD_LINE_SRC_LOCN" source="PLANT_SHIP_POINT"/>
+      </input>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARGO_VOL" source="CARGO_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRS_WT_CONV" source="GRS_WT_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRS_VOL_CONV" source="GRS_VOL_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARGO_WT" source="CARGO_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_LOC" source="DELV_LOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTURE_DATE" source="DEPARTURE_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_CONVERT" source="MTRL_CONVERT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT_UOM" source="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL_UOM" source="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_APPT_TIME" source="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_DROP" source="FRT_ORD_LINE_DEST_DROP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_TRANSPRTN_MODE_DESCR" source="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PLANT_SHIP_POINT$FRT_ORD_LINE_SRC_LOCN" source="FRT_ORD_LINE_SRC_LOCN"/>
+      </input>
+      <joinAttribute name="JOIN$PLANT_SHIP_POINT$FRT_ORD_LINE_SRC_LOCN"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CARRIER"/>
+        <viewAttribute id="CARRIER_NAME1"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="CARRIER_CONCAT" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;CARRIER&quot; +' - '+ &quot;CARRIER_NAME1&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models::CA_VEND_CARRIER_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER_NAME1" source="CARRIER_NAME1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CARRIER_CONCAT"/>
+        <viewAttribute id="DELV_PLANT"/>
+        <viewAttribute id="CARRIER"/>
+        <viewAttribute id="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_DROP"/>
+        <viewAttribute id="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <viewAttribute id="FRT_ORD"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <viewAttribute id="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <viewAttribute id="MTRL_CONVERT"/>
+        <viewAttribute id="DEPARTURE_DATE"/>
+        <viewAttribute id="DELV_LOC"/>
+        <viewAttribute id="CARGO_WT"/>
+        <viewAttribute id="CARGO_VOL"/>
+        <viewAttribute id="GRS_WT_CONV"/>
+        <viewAttribute id="GRS_VOL_CONV"/>
+        <viewAttribute id="PRIM_BRKR"/>
+        <viewAttribute id="SALES_ORD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_PLANT" source="DELV_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_TRANSPRTN_MODE_DESCR" source="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_DROP" source="FRT_ORD_LINE_DEST_DROP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_DEST_APPT_TIME" source="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL_UOM" source="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT_UOM" source="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_CONVERT" source="MTRL_CONVERT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTURE_DATE" source="DEPARTURE_DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DELV_LOC" source="DELV_LOC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARGO_WT" source="CARGO_WT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARGO_VOL" source="CARGO_VOL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRS_WT_CONV" source="GRS_WT_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="GRS_VOL_CONV" source="GRS_VOL_CONV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+      </input>
+      <input node="Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER_CONCAT" source="CARRIER_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+      </input>
+      <joinAttribute name="CARRIER"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="CARRIER_CONCAT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CARRIER_CONCAT"/>
+        <keyMapping columnObjectName="Join_2" columnName="CARRIER_CONCAT"/>
+      </attribute>
+      <attribute id="DELV_PLANT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DELV_PLANT"/>
+        <keyMapping columnObjectName="Join_2" columnName="DELV_PLANT"/>
+      </attribute>
+      <attribute id="FRT_ORD_TRANSPRTN_MODE_DESCR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+        <keyMapping columnObjectName="Join_2" columnName="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_DEST_DROP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_DEST_DROP"/>
+        <keyMapping columnObjectName="Join_2" columnName="FRT_ORD_LINE_DEST_DROP"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_DEST_APPT_TIME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_DEST_APPT_TIME"/>
+        <keyMapping columnObjectName="Join_2" columnName="FRT_ORD_LINE_DEST_APPT_TIME"/>
+      </attribute>
+      <attribute id="FRT_ORD" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD"/>
+        <keyMapping columnObjectName="Join_2" columnName="FRT_ORD"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_GRS_VOL_UOM" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_VOL_UOM"/>
+        <keyMapping columnObjectName="Join_2" columnName="FRT_ORD_LINE_GRS_VOL_UOM"/>
+      </attribute>
+      <attribute id="FRT_ORD_LINE_GRS_WT_UOM" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_WT_UOM"/>
+        <keyMapping columnObjectName="Join_2" columnName="FRT_ORD_LINE_GRS_WT_UOM"/>
+      </attribute>
+      <attribute id="MTRL_CONVERT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MTRL_CONVERT"/>
+        <keyMapping columnObjectName="Join_2" columnName="MTRL_CONVERT"/>
+      </attribute>
+      <attribute id="DEPARTURE_DATE" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTURE_DATE"/>
+        <keyMapping columnObjectName="Join_2" columnName="DEPARTURE_DATE"/>
+      </attribute>
+      <attribute id="DELV_LOC" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DELV_LOC"/>
+        <keyMapping columnObjectName="Join_2" columnName="DELV_LOC"/>
+      </attribute>
+      <attribute id="CARGO_WT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CARGO_WT"/>
+        <keyMapping columnObjectName="Join_2" columnName="CARGO_WT"/>
+      </attribute>
+      <attribute id="CARGO_VOL" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CARGO_VOL"/>
+        <keyMapping columnObjectName="Join_2" columnName="CARGO_VOL"/>
+      </attribute>
+      <attribute id="GRS_WT_CONV" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRS_WT_CONV"/>
+        <keyMapping columnObjectName="Join_2" columnName="GRS_WT_CONV"/>
+      </attribute>
+      <attribute id="GRS_VOL_CONV" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRS_VOL_CONV"/>
+        <keyMapping columnObjectName="Join_2" columnName="GRS_VOL_CONV"/>
+      </attribute>
+      <attribute id="PRIM_BRKR" order="16" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HDR_PRIM_BRKR"/>
+        <keyMapping columnObjectName="Join_2" columnName="PRIM_BRKR"/>
+      </attribute>
+      <attribute id="SALES_ORD" order="17" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_ORD"/>
+        <keyMapping columnObjectName="Join_2" columnName="SALES_ORD"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="373.49256887680195" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="577"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="351.096385545108" y="457"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="281.99999999999994" y="577"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="115.33333333333337" y="457"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="138.66666666666674" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Join_3" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="439.64458696804655" y="337"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="373.49256887680195" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    
+      <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>
