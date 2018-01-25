@@ -1,10 +1,4 @@
 {
-  "cos.db.synonyms::VBUK_1": {
-    "target": {
-      "object": "VBUK",
-      "schema": "TECC_PR3"
-    }
-  },
   "cos.db.synonyms::VBUK": {
     "target": {
       "object": "VBUK",
