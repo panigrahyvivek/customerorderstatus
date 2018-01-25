@@ -25,6 +25,9 @@ modules:
  - name: js
    type: nodejs
    path: js
+   requires: 
+    - name: db
+    - name: hdi-container-1
    provides:
     - name: js_api
       properties:

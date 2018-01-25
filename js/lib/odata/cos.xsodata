@@ -1,0 +1,3 @@
+service {
+	"cos.db.models::CA_SLS_FRT_ORDER_RSLT" as "orders" keys generate local "ID";
+}
