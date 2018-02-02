@@ -1,56 +1,68 @@
 ID: cos
 _schema-version: '2.0'
 version: 0.0.1
-
 modules:
- - name: db
-   type: hdb
-   path: db
-   requires:
-    - name: hdi-container-1
-      properties: 
-         TARGET_CONTAINER: '~{hdi-container-name}'
-    - name: edm-cross-container-1
-      group: SERVICE_REPLACEMENTS
-      properties: 
-         key: edm-schema-service
-         service: '~{edm-cross-container-1-service-name}'
-    - name: tecc-pr3-cross-container
-      group: SERVICE_REPLACEMENTS
-      properties: 
-         key: tecc-pr3-schema-service
-         service: '~{tecc-pr3-container-service-name}'
-
-
- - name: js
-   type: nodejs
-   path: js
-   requires: 
-    - name: db
-    - name: hdi-container-1
-   provides:
-    - name: js_api
-      properties:
-         url: ${default-url}
-
+  - name: db
+    type: hdb
+    path: db
+    requires:
+      - name: hdi-container-1
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+      - name: edm-cross-container-1
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: edm-schema-service
+          service: '~{edm-cross-container-1-service-name}'
+      - name: tecc-pr3-cross-container
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: tecc-pr3-schema-service
+          service: '~{tecc-pr3-container-service-name}'
+  - name: js
+    type: nodejs
+    path: js
+    requires:
+      - name: db
+      - name: hdi-container-1
+      - name: cos_uaa
+    provides:
+      - name: js_api
+        properties:
+          cos_rest_url: '${default-url}'
+  - name: approuter
+    type: html5
+    path: approuter
+    requires: 
+      - name: cos_uaa
+      - name: js_api
+        group: destinations
+        properties: 
+          name: cos_rest
+          url: ~{cos_rest_url}
+          forwardAuthToken: true
 resources:
- - name: hdi-container-1
-   parameters:
+  - name: hdi-container-1
+    parameters:
       config:
-         schema: COS
-   properties:
-      hdi-container-name: ${service-name}
-   type: com.sap.xs.hdi-container
- - name: edm-cross-container-1
-   type: org.cloudfoundry.existing-service
-   parameters:
+        schema: COS
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: edm-cross-container-1
+    type: org.cloudfoundry.existing-service
+    parameters:
       service-name: CROSS_SCHEMA_EDM
-   properties: 
+    properties:
       edm-cross-container-1-service-name: '${service-name}'
- - name: tecc-pr3-cross-container
-   type: org.cloudfoundry.existing-service
-   parameters:
+  - name: tecc-pr3-cross-container
+    type: org.cloudfoundry.existing-service
+    parameters:
       service-name: CROSS_SCHEMA_TECC_PR3
-   properties: 
+    properties:
       tecc-pr3-container-service-name: '${service-name}'
-   
+  - name: cos_uaa
+    type: com.sap.xs.uaa
+    parameters:
+      service-name: cos_uaa
+      path: ./xs-security.json

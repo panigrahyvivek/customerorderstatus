@@ -1,0 +1,32 @@
+{
+	"xsappname": "cos",
+	"tenant-mode": "dedicated",
+
+	"scopes": [{
+		"name": "$XSAPPNAME.read",
+		"description": "Read access for COS application"
+	}, {
+		"name": "uaa.user",
+		"description": "uaa.user"
+	}],
+
+	"attributes": [{
+		"name": "broker",
+		"description": "Broker ID",
+		"valueType": "string"
+	}],
+
+	"role-templates": [{
+		"name": "COSViewer",
+		"description": "Access COS Application",
+		"scope-references": [
+			"$XSAPPNAME.read",
+			"uaa.user"
+		],
+		"attribute-references": ["broker"]
+	}],
+	
+	"oauth2-configuration": {
+        "token-validity": 3600
+    }
+}

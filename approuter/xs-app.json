@@ -1,0 +1,9 @@
+{
+	"welcomeFile": "index.html",
+	"authenticationMethod": "none",
+	"routes": [{
+		"source": "/rest/(.*)",
+		"target": "$1",
+		"destination": "cos_rest"
+	}]
+}
