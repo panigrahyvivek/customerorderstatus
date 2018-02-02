@@ -4,7 +4,7 @@ context maint {
 
     /*@@layout{"layoutInfo":{"x":0,"y":64.5}}*/
     entity BrokerMapping {
-        BROKER_USER_ID : String(256);
-        DOC_NUMBER     : String(10);
+        key BROKER_USER_ID : String(256);
+        key DOC_NUMBER     : String(10);
     };
 };
