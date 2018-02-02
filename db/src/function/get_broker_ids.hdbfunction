@@ -1,0 +1,7 @@
+FUNCTION "cos.db.function::get_broker_ids" (IN BROKER_USER_NAME VARCHAR(256))
+       RETURNS table (BROKER_ID varchar(10))
+       LANGUAGE SQLSCRIPT 
+       SQL SECURITY INVOKER AS 
+BEGIN 
+	return select "DOC_NUMBER" as "BROKER_ID" from "cos.db.data::maint.BrokerMapping" where "BROKER_USER_ID" = :BROKER_USER_NAME;
+END;

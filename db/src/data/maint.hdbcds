@@ -1,0 +1,10 @@
+namespace cos.db.data;
+
+context maint {
+
+    /*@@layout{"layoutInfo":{"x":0,"y":64.5}}*/
+    entity BrokerMapping {
+        BROKER_USER_ID : String(256);
+        DOC_NUMBER     : String(10);
+    };
+};

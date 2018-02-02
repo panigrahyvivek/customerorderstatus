@@ -1,0 +1,5 @@
+STRUCTURED PRIVILEGE 
+    "cos.db.ap::search_result_broker_filter"
+    FOR SELECT ON 
+    "cos.db.models::CA_SLS_FRT_ORDER_RSLT"
+    where "PRIM_BRKR" in ( select "BROKER_ID" from "cos.db.function::get_broker_ids"(SESSION_CONTEXT('XS_APPLICATIONUSER')) )

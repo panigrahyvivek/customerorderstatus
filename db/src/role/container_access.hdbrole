@@ -1,0 +1,19 @@
+{
+	"role":{
+		"name": "cos.db.role::container_access",
+		"schema_privileges": [{
+		   "privileges": ["SELECT METADATA", 
+		    			  "SELECT CDS METADATA", 
+		    			  "SELECT", 
+		    			  "INSERT",
+		    			  "DELETE",
+		    			  "EXECUTE", 
+		    			  "CREATE TEMPORARY TABLE"
+			]
+		}],
+		
+		"schema_analytic_privileges": [{
+			"privileges": ["cos.db.ap::broker_filter", "cos.db.ap::search_result_broker_filter"]
+		}]
+	}
+}
