@@ -1,10 +1,9 @@
 {
 	"welcomeFile": "index.html",
-	"authenticationMethod": "route",
+	"authenticationMethod": "none",
 	"routes": [{
 		"source": "/rest/(.*)",
 		"target": "$1",
-		"destination": "cos_rest",
-		"scope": "$XSAPPNAME.read"
+		"destination": "cos_rest"
 	}]
 }

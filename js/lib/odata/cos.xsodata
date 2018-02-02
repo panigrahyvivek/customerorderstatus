@@ -1,3 +1,13 @@
 service {
-	"cos.db.models::CA_SLS_FRT_ORDER_RSLT" as "orders" keys generate local "ID";
+
+	"cos.db.models::CA_SLS_FRT_ORDER_RSLT" as "Orders" keys generate local "ID";
+	
+	// value help entities
+	"cos.db.models::CA_SHIP_TO_CUST_FLTR" as "ShipTo" with ("SHIPTO", "SHIPTO_NAME1") keys ("SHIPTO");
+	"cos.db.models::CA_SOLD_TO_CUST_FLTR" as "SoldTo" with ("SOLDTO", "SOLDTO_NAME1") keys ("SOLDTO");
+	"cos.db.models::CA_BROKER_FLTR" as "Broker" with ("BRKR", "BRKR_NAME1") keys ("BRKR");
+	"cos.db.models::CA_DELV_PLANT_FLTR" as "Plant" with ("PLANT", "PLANT_NAME1") keys ("PLANT");
+	"cos.db.models::CA_DIVISION_FLTR" as "Division" with ("DIVISION", "DIV_DESCR") keys ("DIVISION");
+	"cos.db.models::CA_DISTN_CHAN_FLTR" as "DistributionChannel" with ("DISTN_CHAN", "DISTN_CHAN_DESCR") keys ("DISTN_CHAN");
+	"cos.db.models::CA_SLS_POSN_FLTR" as "SalesPosition" with ("SALES_POSN", "SALES_POSN_NAME") keys ("SALES_POSN_NAME");
 }
