@@ -1,7 +1,22 @@
 service {
 
-	"cos.db.models::CA_SLS_FRT_ORDER_RSLT" as "Orders" keys generate local "ID";
+	"cos.db.models::CA_SLS_FRT_ORDER_RSLT" as "SearchResults" keys generate local "ID";
 
+	"cos.db.models::CA_SLS_ORDER_HDR" 
+	  as "SalesOrderHeader" 
+	  // keys ("SALES_ORD") //  key and 	   
+	  keys generate local "ID"			   
+	  aggregates always parameters via entity "SalesOrderParameter" results property "SalesOrder"; 
+
+    "cos.db.models::CA_SLS_ORDER_DTL" 
+	 as "SalesOrderDetails" 
+	 // keys ("SALES_ORD", "SALES_ORD_LINE")
+	 keys generate local "ID"
+	 aggregates always parameters via entity "SalesOrderDetailParameter" results property "LineItems";  
+
+	"cos.db.models::CA_FRT_ORD_EVENT_HIST" as "FreightOrderEventHistory" keys generate local "ID";  
+	"cos.db.models::CA_FRT_ORD_DROP_DTL" as "FreightOrderDetails" keys generate local "ID";  
+	 
 	// value help entities
 	"cos.db.models::CA_SHIP_TO_CUST_FLTR" as "ShipTo" with ("SHIPTO", "SHIPTO_NAME1") keys ("SHIPTO");
 	"cos.db.models::CA_SOLD_TO_CUST_FLTR" as "SoldTo" with ("SOLDTO", "SOLDTO_NAME1") keys ("SOLDTO");
