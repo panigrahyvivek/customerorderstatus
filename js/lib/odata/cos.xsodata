@@ -1,7 +1,7 @@
 service {
 
 	"cos.db.models::CA_SLS_FRT_ORDER_RSLT" as "Orders" keys generate local "ID";
-	
+
 	// value help entities
 	"cos.db.models::CA_SHIP_TO_CUST_FLTR" as "ShipTo" with ("SHIPTO", "SHIPTO_NAME1") keys ("SHIPTO");
 	"cos.db.models::CA_SOLD_TO_CUST_FLTR" as "SoldTo" with ("SOLDTO", "SOLDTO_NAME1") keys ("SOLDTO");
