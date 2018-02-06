@@ -4,12 +4,12 @@
   <localVariables/>
   <variableMappings/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_CUST_BRKR_EDM">
-      <resourceUri>cos.db.models::CA_CUST_BRKR_EDM</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_CUST_BRKR_EDM">
+      <resourceUri>cos.db.models.valuehelp::CA_CUST_BRKR_EDM</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews/>
-  <logicalModel id="cos.db.models::CA_CUST_BRKR_EDM">
+  <logicalModel id="cos.db.models.valuehelp::CA_CUST_BRKR_EDM">
     <attributes>
       <attribute id="BRKR" order="2" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="KUNNR"/>
@@ -26,7 +26,7 @@
         <keyCalculation datatype="NVARCHAR" length="50">
           <formula>&quot;BRKR&quot; +' - '+ &quot;BRKR_NAME1&quot;</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>

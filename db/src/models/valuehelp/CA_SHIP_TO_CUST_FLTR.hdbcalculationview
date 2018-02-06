@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models.valuehelp::CA_SHIP_TO_CUST_FLTR" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SHIP_TO_FLTR"/>
+  <metadata changedAt="2018-01-24 10:37:36.924"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="46"/>
+  <dataSources>
+    <DataSource id="cos.db.models.valuehelp::CA_CUST_SHIPTO_EDM">
+      <resourceUri>cos.db.models.valuehelp::CA_CUST_SHIPTO_EDM</resourceUri>
+    </DataSource>
+    <DataSource id="cos.db.models.internal::CA_CNTRY_EDM">
+      <resourceUri>cos.db.models.internal::CA_CNTRY_EDM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SHIPTO_NAME1"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SHIPTO_CONCAT" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;SHIPTO&quot; +' - '+ &quot;SHIPTO_NAME1&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models.valuehelp::CA_CUST_SHIPTO_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_NAME1" source="SHIPTO_NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CNTRY"/>
+        <viewAttribute id="ISO_CNTRY_LONG_NAME"/>
+        <viewAttribute id="ISO_CNTRY_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="cos.db.models.internal::CA_CNTRY_EDM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CNTRY" source="CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ISO_CNTRY_LONG_NAME" source="ISO_CNTRY_LONG_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ISO_CNTRY_NAME" source="ISO_CNTRY_NAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_NAME1"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="ISO_CNTRY_LONG_NAME"/>
+        <viewAttribute id="ISO_CNTRY_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <restrictedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_NAME1" source="SHIPTO_NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+      </input>
+      <input node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ISO_CNTRY_LONG_NAME" source="ISO_CNTRY_LONG_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ISO_CNTRY_NAME" source="ISO_CNTRY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="CNTRY"/>
+      </input>
+      <joinAttribute name="SHIPTO_ADDR_CNTRY"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SHIPTO"/>
+        <viewAttribute id="SHIPTO_CONCAT"/>
+        <viewAttribute id="SHIPTO_NAME1"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET4"/>
+        <viewAttribute id="SHIPTO_ADDR_STREET5"/>
+        <viewAttribute id="SHIPTO_ADDR_CITY"/>
+        <viewAttribute id="SHIPTO_ADDR_POSTAL_CODE"/>
+        <viewAttribute id="SHIPTO_ADDR_REGN"/>
+        <viewAttribute id="SHIPTO_ADDR_CNTRY"/>
+        <viewAttribute id="ISO_CNTRY_LONG_NAME"/>
+        <viewAttribute id="ISO_CNTRY_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="CNTRY_NAME" length="50" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(&quot;SHIPTO_ADDR_CNTRY&quot;='ZUS','USA',
+if(trim(&quot;ISO_CNTRY_LONG_NAME&quot;)='',&quot;ISO_CNTRY_NAME&quot;,&quot;ISO_CNTRY_LONG_NAME&quot;)
+)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_NAME1" source="SHIPTO_NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET" source="SHIPTO_ADDR_STREET"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET4" source="SHIPTO_ADDR_STREET4"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_STREET5" source="SHIPTO_ADDR_STREET5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CITY" source="SHIPTO_ADDR_CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_POSTAL_CODE" source="SHIPTO_ADDR_POSTAL_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_REGN" source="SHIPTO_ADDR_REGN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_ADDR_CNTRY" source="SHIPTO_ADDR_CNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ISO_CNTRY_LONG_NAME" source="ISO_CNTRY_LONG_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ISO_CNTRY_NAME" source="ISO_CNTRY_NAME"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_3">
+    <descriptions/>
+    <attributes>
+      <attribute id="SHIPTO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO"/>
+      </attribute>
+      <attribute id="SHIPTO_CONCAT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_CONCAT"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_CONCAT"/>
+      </attribute>
+      <attribute id="SHIPTO_NAME1" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_NAME1"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_NAME1"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_ADDR_STREET"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET4" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET4"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_ADDR_STREET4"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_STREET5" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_STREET5"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_ADDR_STREET5"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_CITY" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_CITY"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_ADDR_CITY"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_POSTAL_CODE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_POSTAL_CODE"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_ADDR_POSTAL_CODE"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_REGN" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_REGN"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_ADDR_REGN"/>
+      </attribute>
+      <attribute id="SHIPTO_ADDR_CNTRY" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SHIPTO_ADDR_COUNTRY_CODE"/>
+        <keyMapping columnObjectName="Projection_3" columnName="SHIPTO_ADDR_CNTRY"/>
+      </attribute>
+      <attribute id="CNTRY_NAME" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CNTRY_NAME"/>
+        <keyMapping columnObjectName="Projection_3" columnName="CNTRY_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="229" y="112"/>
+        <rectangleSize height="0" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="442"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="282" y="442"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="213" y="322"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="20" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+        <upperLeftCorner x="320" y="30"/>
+        <rectangleSize width="250"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="213" y="217"/>
+        <rectangleSize height="-1" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

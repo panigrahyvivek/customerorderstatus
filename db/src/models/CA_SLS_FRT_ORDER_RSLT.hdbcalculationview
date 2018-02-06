@@ -6,29 +6,29 @@
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="51"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_SALES_ORDER_EDM">
-      <resourceUri>cos.db.models::CA_SALES_ORDER_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_SALES_ORDER_EDM">
+      <resourceUri>cos.db.models.internal::CA_SALES_ORDER_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
-      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_FRT_ORD_EDM">
+      <resourceUri>cos.db.models.internal::CA_FRT_ORD_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_SD_DOC_FLOW_EDM">
-      <resourceUri>cos.db.models::CA_SD_DOC_FLOW_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_SD_DOC_FLOW_EDM">
+      <resourceUri>cos.db.models.internal::CA_SD_DOC_FLOW_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_DELV_DOC_EDM">
-      <resourceUri>cos.db.models::CA_DELV_DOC_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_DELV_DOC_EDM">
+      <resourceUri>cos.db.models.internal::CA_DELV_DOC_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_SOLD_TO_CUST_FLTR">
-      <resourceUri>cos.db.models::CA_SOLD_TO_CUST_FLTR</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_SOLD_TO_CUST_FLTR">
+      <resourceUri>cos.db.models.valuehelp::CA_SOLD_TO_CUST_FLTR</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_DISTN_CHAN_FLTR">
-      <resourceUri>cos.db.models::CA_DISTN_CHAN_FLTR</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_DISTN_CHAN_FLTR">
+      <resourceUri>cos.db.models.valuehelp::CA_DISTN_CHAN_FLTR</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_DIVISION_FLTR">
-      <resourceUri>cos.db.models::CA_DIVISION_FLTR</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_DIVISION_FLTR">
+      <resourceUri>cos.db.models.valuehelp::CA_DIVISION_FLTR</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_SHIP_TO_CUST_FLTR">
-      <resourceUri>cos.db.models::CA_SHIP_TO_CUST_FLTR</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_SHIP_TO_CUST_FLTR">
+      <resourceUri>cos.db.models.valuehelp::CA_SHIP_TO_CUST_FLTR</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews>
@@ -55,7 +55,7 @@
         </calculatedViewAttribute>
       </calculatedViewAttributes>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SALES_ORDER_EDM">
+      <input node="cos.db.models.internal::CA_SALES_ORDER_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
@@ -80,7 +80,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_FRT_ORD_EDM">
+      <input node="cos.db.models.internal::CA_FRT_ORD_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
       </input>
@@ -136,7 +136,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SD_DOC_FLOW_EDM">
+      <input node="cos.db.models.internal::CA_SD_DOC_FLOW_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="SD_PRECEDING_DOC" source="SD_PRECEDING_DOC"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
       </input>
@@ -202,7 +202,7 @@
         </calculatedViewAttribute>
       </calculatedViewAttributes>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_DELV_DOC_EDM">
+      <input node="cos.db.models.internal::CA_DELV_DOC_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC" source="DELV_DOC"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_PLAN_MOVEMENT_DATE" source="DELV_DOC_PLAN_MOVEMENT_DATE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_ACTL_MOVEMENT_DATE" source="DELV_DOC_ACTL_MOVEMENT_DATE"/>
@@ -265,7 +265,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SOLD_TO_CUST_FLTR">
+      <input node="cos.db.models.valuehelp::CA_SOLD_TO_CUST_FLTR">
         <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO" source="SOLDTO"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SOLDTO_CONCAT" source="SOLDTO_CONCAT"/>
       </input>
@@ -364,7 +364,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_DISTN_CHAN_FLTR">
+      <input node="cos.db.models.valuehelp::CA_DISTN_CHAN_FLTR">
         <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN" source="DISTN_CHAN"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DISTN_CHAN_CONCAT" source="DISTN_CHAN_CONCAT"/>
       </input>
@@ -422,7 +422,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_DIVISION_FLTR">
+      <input node="cos.db.models.valuehelp::CA_DIVISION_FLTR">
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_CONCAT" source="DIVISION_CONCAT"/>
       </input>
@@ -482,7 +482,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SHIP_TO_CUST_FLTR">
+      <input node="cos.db.models.valuehelp::CA_SHIP_TO_CUST_FLTR">
         <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO" source="SHIPTO"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SHIPTO_CONCAT" source="SHIPTO_CONCAT"/>
       </input>

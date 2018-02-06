@@ -4,8 +4,8 @@
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
-    <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+  <DataSource id="cos.db.models.internal::CA_FRT_ORD_EDM">
+    <resourceUri>cos.db.models.internal::CA_FRT_ORD_EDM</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -38,7 +38,7 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
-    <input node="cos.db.models::CA_FRT_ORD_EDM">
+    <input node="cos.db.models.internal::CA_FRT_ORD_EDM">
       <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT_UOM" source="FRT_ORD_LINE_GRS_WT_UOM"/>

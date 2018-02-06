@@ -6,12 +6,12 @@
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="27"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_CUST_SVC_REP_EDM">
-      <resourceUri>cos.db.models::CA_CUST_SVC_REP_EDM</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_CUST_SVC_REP_EDM">
+      <resourceUri>cos.db.models.valuehelp::CA_CUST_SVC_REP_EDM</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews/>
-  <logicalModel id="cos.db.models::CA_CUST_SVC_REP_EDM">
+  <logicalModel id="cos.db.models.valuehelp::CA_CUST_SVC_REP_EDM">
     <descriptions/>
     <attributes>
       <attribute id="CSR" order="1" attributeHierarchyActive="false" displayAttribute="false">

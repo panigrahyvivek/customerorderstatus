@@ -6,12 +6,12 @@
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="27"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_DIVISION_EDM">
-      <resourceUri>cos.db.models::CA_DIVISION_EDM</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_DIVISION_EDM">
+      <resourceUri>cos.db.models.valuehelp::CA_DIVISION_EDM</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews/>
-  <logicalModel id="cos.db.models::CA_DIVISION_EDM">
+  <logicalModel id="cos.db.models.valuehelp::CA_DIVISION_EDM">
     <descriptions/>
     <attributes>
       <attribute id="DIVISION" order="2" attributeHierarchyActive="false" displayAttribute="false">
@@ -29,7 +29,7 @@
         <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="25">
           <formula>&quot;DIVISION&quot; +' - '+ &quot;DIV_DESCR&quot;</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SHIP_STATUS_EVENT" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models.internal::CA_SHIP_STATUS_EVENT" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
   <descriptions defaultDescription="CA_SHIP_STATUS_EVENT"/>
   <metadata changedAt="2018-01-24 10:28:43.385"/>
   <localVariables/>
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="27"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_SHIP_STATUS_EVENT_EDM">
-      <resourceUri>cos.db.models::CA_SHIP_STATUS_EVENT_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_SHIP_STATUS_EVENT_EDM">
+      <resourceUri>cos.db.models.internal::CA_SHIP_STATUS_EVENT_EDM</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews>
@@ -29,7 +29,7 @@
         </calculatedViewAttribute>
       </calculatedViewAttributes>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SHIP_STATUS_EVENT_EDM">
+      <input node="cos.db.models.internal::CA_SHIP_STATUS_EVENT_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_DOC" source="FRT_ORD_DOC"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_DESCR" source="SHIP_STATUS_EVENT_DESCR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_LOCN_REGN" source="SHIP_STATUS_EVENT_LOCN_REGN"/>
@@ -102,4 +102,4 @@
       </shape>
     </shapes>
   </layout>
-</Calculation:scenario>
+</Calculation:scenario> 

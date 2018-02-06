@@ -6,17 +6,17 @@
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="39"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
-      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_FRT_ORD_EDM">
+      <resourceUri>cos.db.models.internal::CA_FRT_ORD_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_PLANT_EDM">
-      <resourceUri>cos.db.models::CA_PLANT_EDM</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_PLANT_EDM">
+      <resourceUri>cos.db.models.valuehelp::CA_PLANT_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_SALES_ORDER_EDM">
-      <resourceUri>cos.db.models::CA_SALES_ORDER_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_SALES_ORDER_EDM">
+      <resourceUri>cos.db.models.internal::CA_SALES_ORDER_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_VEND_CARRIER_EDM">
-      <resourceUri>cos.db.models::CA_VEND_CARRIER_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_VEND_CARRIER_EDM">
+      <resourceUri>cos.db.models.internal::CA_VEND_CARRIER_EDM</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews>
@@ -61,7 +61,7 @@
         </calculatedViewAttribute>
       </calculatedViewAttributes>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_FRT_ORD_EDM">
+      <input node="cos.db.models.internal::CA_FRT_ORD_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE" source="FRT_ORD_LINE_SRC_PLAN_TRANSPORT_DATE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_TRANSPRTN_MODE_DESCR" source="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
@@ -89,7 +89,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_PLANT_EDM">
+      <input node="cos.db.models.valuehelp::CA_PLANT_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="PLANT" source="PLANT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PLANT_NAME1" source="PLANT_NAME1"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PLANT_SHIP_POINT" source="PLANT_SHIP_POINT"/>
@@ -103,7 +103,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SALES_ORDER_EDM">
+      <input node="cos.db.models.internal::CA_SALES_ORDER_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PRIM_BRKR" source="PRIM_BRKR"/>
       </input>
@@ -224,7 +224,7 @@
         </calculatedViewAttribute>
       </calculatedViewAttributes>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_VEND_CARRIER_EDM">
+      <input node="cos.db.models.internal::CA_VEND_CARRIER_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER_NAME1" source="CARRIER_NAME1"/>
       </input>
@@ -367,7 +367,7 @@
   <layout>
     <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="373.49256887680195" y="112"/>
+        <upperLeftCorner x="373" y="112"/>
         <rectangleSize height="0" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
@@ -375,15 +375,15 @@
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="351.096385545108" y="457"/>
+        <upperLeftCorner x="351" y="457"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="281.99999999999994" y="577"/>
+        <upperLeftCorner x="281" y="577"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="115.33333333333337" y="457"/>
+        <upperLeftCorner x="115" y="457"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -395,7 +395,7 @@
         <rectangleSize width="250"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="138.66666666666674" y="337"/>
+        <upperLeftCorner x="138" y="337"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -407,11 +407,11 @@
         <rectangleSize width="250"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="439.64458696804655" y="337"/>
+        <upperLeftCorner x="439" y="337"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="373.49256887680195" y="217"/>
+        <upperLeftCorner x="373" y="217"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
     

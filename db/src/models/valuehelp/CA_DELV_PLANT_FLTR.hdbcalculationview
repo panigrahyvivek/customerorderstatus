@@ -6,12 +6,12 @@
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="27"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_PLANT_EDM">
-      <resourceUri>cos.db.models::CA_PLANT_EDM</resourceUri>
+    <DataSource id="cos.db.models.valuehelp::CA_PLANT_EDM">
+      <resourceUri>cos.db.models.valuehelp::CA_PLANT_EDM</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews/>
-  <logicalModel id="cos.db.models::CA_PLANT_EDM">
+  <logicalModel id="cos.db.models.valuehelp::CA_PLANT_EDM">
     <descriptions/>
     <attributes>
       <attribute id="PLANT" order="2" attributeHierarchyActive="false" displayAttribute="false">
@@ -29,7 +29,7 @@
         <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="40">
           <formula>&quot;PLANT&quot; +' - '+ &quot;PLANT_NAME1&quot;</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models.valuehelp::CA_SALES_POSN_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CA_SALES_POSN_EDM"/>
+  <metadata changedAt="2018-01-24 10:34:31.332"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="cos.db.synonyms::CA_SALES_POSN_V1">
+      <resourceUri>cos.db.synonyms::CA_SALES_POSN_V1</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="cos.db.synonyms::CA_SALES_POSN_V1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SALES_POSN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_POSN"/>
+        <keyMapping columnObjectName="CA_SALES_POSN_V1" columnName="SALES_POSN"/>
+      </attribute>
+      <attribute id="SALES_POSN_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_POSN_NAME"/>
+        <keyMapping columnObjectName="CA_SALES_POSN_V1" columnName="SALES_POSN_NAME1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

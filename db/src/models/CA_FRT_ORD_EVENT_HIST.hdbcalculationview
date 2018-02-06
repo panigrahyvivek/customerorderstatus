@@ -6,8 +6,8 @@
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="27"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_SHIP_STATUS_EVENT">
-      <resourceUri>cos.db.models::CA_SHIP_STATUS_EVENT</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_SHIP_STATUS_EVENT">
+      <resourceUri>cos.db.models.internal::CA_SHIP_STATUS_EVENT</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews>
@@ -31,7 +31,7 @@
         </calculatedViewAttribute>
       </calculatedViewAttributes>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SHIP_STATUS_EVENT">
+      <input node="cos.db.models.internal::CA_SHIP_STATUS_EVENT">
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_DOC" source="FRT_ORD_DOC"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_DESCR" source="SHIP_STATUS_EVENT_DESCR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SHIP_STATUS_EVENT_LOCN_REGN" source="SHIP_STATUS_EVENT_LOCN_REGN"/>

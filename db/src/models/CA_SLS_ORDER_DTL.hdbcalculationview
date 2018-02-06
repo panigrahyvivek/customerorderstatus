@@ -14,20 +14,20 @@
   <variableMappings/>
   <informationModelLayout relativeWidthScenario="45"/>
   <dataSources>
-    <DataSource id="cos.db.models::CA_SALES_ORDER_EDM">
-      <resourceUri>cos.db.models::CA_SALES_ORDER_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_SALES_ORDER_EDM">
+      <resourceUri>cos.db.models.internal::CA_SALES_ORDER_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM">
-      <resourceUri>cos.db.models::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM">
+      <resourceUri>cos.db.models.internal::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
-      <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_FRT_ORD_EDM">
+      <resourceUri>cos.db.models.internal::CA_FRT_ORD_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_SD_DOC_FLOW_EDM">
-      <resourceUri>cos.db.models::CA_SD_DOC_FLOW_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_SD_DOC_FLOW_EDM">
+      <resourceUri>cos.db.models.internal::CA_SD_DOC_FLOW_EDM</resourceUri>
     </DataSource>
-    <DataSource id="cos.db.models::CA_DELV_DOC_EDM">
-      <resourceUri>cos.db.models::CA_DELV_DOC_EDM</resourceUri>
+    <DataSource id="cos.db.models.internal::CA_DELV_DOC_EDM">
+      <resourceUri>cos.db.models.internal::CA_DELV_DOC_EDM</resourceUri>
     </DataSource>
   </dataSources>
   <calculationViews>
@@ -46,7 +46,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SALES_ORDER_EDM">
+      <input node="cos.db.models.internal::CA_SALES_ORDER_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD_ITEM_QTY" source="SALES_ORD_LINE_QTY"/>
@@ -67,7 +67,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM">
+      <input node="cos.db.models.internal::CA_MTRL_FG_SALEABLE_WIP_SAMPLE_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="MTRL" source="MTRL"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MTRL_DESCR" source="MTRL_DESCR"/>
       </input>
@@ -144,7 +144,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_FRT_ORD_EDM">
+      <input node="cos.db.models.internal::CA_FRT_ORD_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_QTY" source="FRT_ORD_LINE_PIECE_QTY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_PIECE_UOM" source="FRT_ORD_LINE_PIECE_UOM"/>
@@ -198,7 +198,7 @@
       </viewAttributes>
       <calculatedViewAttributes/>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_SD_DOC_FLOW_EDM">
+      <input node="cos.db.models.internal::CA_SD_DOC_FLOW_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="SD_PRECEDING_DOC" source="SD_PRECEDING_DOC"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SD_SUBSEQNT_DOC" source="SD_SUBSEQNT_DOC"/>
       </input>
@@ -258,7 +258,7 @@
         </calculatedViewAttribute>
       </calculatedViewAttributes>
       <restrictedViewAttributes/>
-      <input node="cos.db.models::CA_DELV_DOC_EDM">
+      <input node="cos.db.models.internal::CA_DELV_DOC_EDM">
         <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC" source="DELV_DOC"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_PLAN_MOVEMENT_DATE" source="DELV_DOC_PLAN_MOVEMENT_DATE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DELV_DOC_ACTL_MOVEMENT_DATE" source="DELV_DOC_ACTL_MOVEMENT_DATE"/>
@@ -441,19 +441,19 @@
   <layout>
     <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="304.8579676078742" y="112"/>
+        <upperLeftCorner x="304" y="112"/>
         <rectangleSize height="0" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="133.95767030877505" y="907"/>
+        <upperLeftCorner x="133" y="907"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="323.95767030877505" y="907"/>
+        <upperLeftCorner x="323" y="907"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="185.78650327283088" y="787"/>
+        <upperLeftCorner x="185" y="787"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -465,15 +465,15 @@
         <rectangleSize width="250"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="185.78650327283083" y="682"/>
+        <upperLeftCorner x="185" y="682"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="375.7865032728309" y="682"/>
+        <upperLeftCorner x="375" y="682"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="289.573876162216" y="562"/>
+        <upperLeftCorner x="289" y="562"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -485,11 +485,11 @@
         <rectangleSize width="250"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="91.99999999999997" y="562"/>
+        <upperLeftCorner x="91" y="562"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="115.33333333333329" y="442"/>
+        <upperLeftCorner x="115" y="442"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -501,11 +501,11 @@
         <rectangleSize width="250"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_7" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="350.55461251192963" y="442"/>
+        <upperLeftCorner x="350" y="442"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="291.5863324358341" y="322"/>
+        <upperLeftCorner x="291" y="322"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
@@ -517,7 +517,7 @@
         <rectangleSize width="250"/>
       </shape>
       <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="291.5863324358341" y="217"/>
+        <upperLeftCorner x="291" y="217"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
     </shapes>
