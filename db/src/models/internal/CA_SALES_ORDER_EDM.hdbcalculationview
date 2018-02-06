@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models::CA_SALES_ORDER_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="cos.db.models.internal::CA_SALES_ORDER_EDM" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
   <descriptions defaultDescription="CA_SALES_ORDER_EDM"/>
   <metadata changedAt="2018-01-24 10:23:43.746"/>
   <localVariables/>
@@ -288,19 +288,19 @@
   <layout>
     <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="212" y="112"/>
+        <upperLeftCorner x="212.295686309074" y="112"/>
         <rectangleSize height="0" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="GET_SALES_ORD_STATUS" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="91" y="337"/>
+        <upperLeftCorner x="91.99999999999997" y="337"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="281" y="337"/>
+        <upperLeftCorner x="281.99999999999994" y="337"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="212" y="217"/>
+        <upperLeftCorner x="212.295686309074" y="217"/>
         <rectangleSize height="-1" width="140"/>
       </shape>
     

@@ -1,5 +1,5 @@
 STRUCTURED PRIVILEGE 
     "cos.db.ap::broker_filter"
     FOR SELECT ON 
-    "cos.db.models::CA_BROKER_FLTR"
+    "cos.db.models.valuehelp::CA_BROKER_FLTR"
     where "BRKR" in ( select "BROKER_ID" from "cos.db.function::get_broker_ids"(SESSION_CONTEXT('XS_APPLICATIONUSER')) )

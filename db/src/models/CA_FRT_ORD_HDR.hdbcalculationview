@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="cos.db.models::CA_FRT_ORD_HDR" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" defaultClient="$$client$$" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CA_FRT_ORD_HDR"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="cos.db.models::CA_FRT_ORD_EDM">
+    <resourceUri>cos.db.models::CA_FRT_ORD_EDM</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="CARRIER">
+        <descriptions defaultDescription="CARRIER"/>
+      </viewAttribute>
+      <viewAttribute id="SALES_ORD">
+        <descriptions defaultDescription="SALES_ORD"/>
+      </viewAttribute>
+      <viewAttribute id="FRT_ORD_LINE_GRS_WT_UOM">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_WT_UOM"/>
+      </viewAttribute>
+      <viewAttribute id="FRT_ORD_LINE_GRS_WT">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_WT"/>
+      </viewAttribute>
+      <viewAttribute id="FRT_ORD_LINE_GRS_VOL">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_VOL"/>
+      </viewAttribute>
+      <viewAttribute id="FRT_ORD_TRANSPRTN_MODE_DESCR">
+        <descriptions defaultDescription="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+      </viewAttribute>
+      <viewAttribute id="FRT_ORD_LINE_GRS_VOL_UOM">
+        <descriptions defaultDescription="FRT_ORD_LINE_GRS_VOL_UOM"/>
+      </viewAttribute>
+      <viewAttribute id="FRT_ORD">
+        <descriptions defaultDescription="FRT_ORD"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="cos.db.models::CA_FRT_ORD_EDM">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER" source="CARRIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ORD" source="SALES_ORD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT_UOM" source="FRT_ORD_LINE_GRS_WT_UOM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_WT" source="FRT_ORD_LINE_GRS_WT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL" source="FRT_ORD_LINE_GRS_VOL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_TRANSPRTN_MODE_DESCR" source="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD_LINE_GRS_VOL_UOM" source="FRT_ORD_LINE_GRS_VOL_UOM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FRT_ORD" source="FRT_ORD"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="CARRIER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRIER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CARRIER"/>
+    </attribute>
+    <attribute id="SALES_ORD" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALES_ORD"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALES_ORD"/>
+    </attribute>
+    <attribute id="FRT_ORD_LINE_GRS_WT_UOM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FRT_ORD_LINE_GRS_WT_UOM"/>
+      <keyMapping columnObjectName="Projection_1" columnName="FRT_ORD_LINE_GRS_WT_UOM"/>
+    </attribute>
+    <attribute id="FRT_ORD_TRANSPRTN_MODE_DESCR" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="FRT_ORD_TRANSPRTN_MODE_DESCR"/>
+    </attribute>
+    <attribute id="FRT_ORD_LINE_GRS_VOL_UOM" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FRT_ORD_LINE_GRS_VOL_UOM"/>
+      <keyMapping columnObjectName="Projection_1" columnName="FRT_ORD_LINE_GRS_VOL_UOM"/>
+    </attribute>
+    <attribute id="FRT_ORD" order="8" displayAttribute="false" attributeHierarchyActive="false" key="true">
+      <descriptions defaultDescription="FRT_ORD"/>
+      <keyMapping columnObjectName="Projection_1" columnName="FRT_ORD"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="FRT_ORD_LINE_GRS_WT" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="FRT_ORD_LINE_GRS_WT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="FRT_ORD_LINE_GRS_WT"/>
+    </measure>
+    <measure id="FRT_ORD_LINE_GRS_VOL" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="FRT_ORD_LINE_GRS_VOL"/>
+      <measureMapping columnObjectName="Projection_1" columnName="FRT_ORD_LINE_GRS_VOL"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="58" y="250"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -14,15 +14,25 @@ service {
 	 keys generate local "ID"
 	 aggregates always parameters via entity "SalesOrderDetailParameter" results property "LineItems";  
 
+
+	//Freight Order Navigations
+	"cos.db.models::CA_FRT_ORD_HDR" as "FreightOrderHeaders" keys("FRT_ORD")
+		navigates("FreightOrders" as "FreightOrderDetails");
+		
+	"cos.db.models::CA_FRT_ORD_DROP_DTL" as "FreightOrderDetails" keys ("FRT_ORD","FRT_ORD_LINE_DEST_DROP");  
 	"cos.db.models::CA_FRT_ORD_EVENT_HIST" as "FreightOrderEventHistory" keys generate local "ID";  
-	"cos.db.models::CA_FRT_ORD_DROP_DTL" as "FreightOrderDetails" keys generate local "ID";  
+	
+	
+	association "FreightOrders" principal "FreightOrderHeaders"("FRT_ORD") multiplicity "1" 
+	dependent "FreightOrderDetails"("FRT_ORD") multiplicity "*"; 
+	
 	 
 	// value help entities
-	"cos.db.models::CA_SHIP_TO_CUST_FLTR" as "ShipTo" with ("SHIPTO", "SHIPTO_NAME1") keys ("SHIPTO");
-	"cos.db.models::CA_SOLD_TO_CUST_FLTR" as "SoldTo" with ("SOLDTO", "SOLDTO_NAME1") keys ("SOLDTO");
-	"cos.db.models::CA_BROKER_FLTR" as "Broker" with ("BRKR", "BRKR_NAME1") keys ("BRKR");
-	"cos.db.models::CA_DELV_PLANT_FLTR" as "Plant" with ("PLANT", "PLANT_NAME1") keys ("PLANT");
-	"cos.db.models::CA_DIVISION_FLTR" as "Division" with ("DIVISION", "DIV_DESCR") keys ("DIVISION");
-	"cos.db.models::CA_DISTN_CHAN_FLTR" as "DistributionChannel" with ("DISTN_CHAN", "DISTN_CHAN_DESCR") keys ("DISTN_CHAN");
-	"cos.db.models::CA_SLS_POSN_FLTR" as "SalesPosition" with ("SALES_POSN", "SALES_POSN_NAME") keys ("SALES_POSN_NAME");
+	"cos.db.models.valuehelp::CA_SHIP_TO_CUST_FLTR" as "ShipTo" with ("SHIPTO", "SHIPTO_NAME1") keys ("SHIPTO");
+	"cos.db.models.valuehelp::CA_SOLD_TO_CUST_FLTR" as "SoldTo" with ("SOLDTO", "SOLDTO_NAME1") keys ("SOLDTO");
+	"cos.db.models.valuehelp::CA_BROKER_FLTR" as "Broker" with ("BRKR", "BRKR_NAME1") keys ("BRKR");
+	"cos.db.models.valuehelp::CA_DELV_PLANT_FLTR" as "Plant" with ("PLANT", "PLANT_NAME1") keys ("PLANT");
+	"cos.db.models.valuehelp::CA_DIVISION_FLTR" as "Division" with ("DIVISION", "DIV_DESCR") keys ("DIVISION");
+	"cos.db.models.valuehelp::CA_DISTN_CHAN_FLTR" as "DistributionChannel" with ("DISTN_CHAN", "DISTN_CHAN_DESCR") keys ("DISTN_CHAN");
+	"cos.db.models.valuehelp::CA_SLS_POSN_FLTR" as "SalesPosition" with ("SALES_POSN", "SALES_POSN_NAME") keys ("SALES_POSN_NAME");
 }
